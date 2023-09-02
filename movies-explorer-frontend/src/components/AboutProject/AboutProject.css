@@ -1,0 +1,73 @@
+.about-project {
+    padding: 110px 70px;
+    min-height: 608px;
+}
+
+.about-project__title {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.88px;
+    border-bottom: 1px solid #dadada;
+    height: 50px;
+    margin: 0 0 70px 0;
+}
+
+.about-project__main-info {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 110px;
+}
+
+.about-project__main-info-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    gap: 26px;
+}
+
+.about-project__main-info-title {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.8px;
+}
+.about-project__main-info-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.about-project__time-info {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    row-gap: 14px;
+}
+
+.about-project__time-info-title {
+    min-height: 36px;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: #303030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-project__time-info-description {
+    color: #8b8b8b;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-project__time-info-title_green-element {
+    color: #000000;
+    background: #3ddc84;
+}

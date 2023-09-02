@@ -1,0 +1,95 @@
+.navigation__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navigation__position-right {
+    justify-content: flex-end;
+}
+
+.navigation__link {
+    display: inline;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+.navigation__link:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.navigation__link:not(:last-child) {
+    margin-right: 16px;
+}
+
+.navigation__no-display {
+    display: none;
+}
+
+.navigation__link_type_movies {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.header__account-container {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 40px;
+    background: #073042;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+}
+
+.header__account-logo {
+    width: 10.383px;
+    height: 10.669px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__account-logo-container {
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    background: #0f4157;
+    margin: 3px 3px 3px 0;
+    position: relative;
+}
+
+.header__account-title {
+    margin-right: 7px;
+}
+
+.navigation__link_type_login {
+    box-sizing: border-box;
+    line-height: 16px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    background: #3ddc84;
+    color: #000;
+}
+
+.navigation__link_type_login:hover {
+    opacity: 0.8;
+}
+
+.navigation__link_type_registration {
+    margin-right: 30px;
+}
+
+.navigation__link_type_registration:hover {
+    opacity: 0.7;
+}

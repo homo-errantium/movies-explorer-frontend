@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 
 import './App.css';
 
-import Header from '../Header/Header';
+// import Header from '../Header/Header';
 import Main from '../Main/Main';
-// import Footer from './Footer';
+// import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
 // import Login from './Login';
 // import Register from './Register';
 
@@ -194,11 +195,16 @@ function App() {
 
     return (
         // <CurrentUserContext.Provider value={currentUser}>
-            <div className='page'>
-                <div className='page__container'>
-                    <Header />
-                    <Main />
-                </div>
+        <div className='page'>
+            <div className='page__container'>
+                <Routes>
+                    <Route path='/' element={<Main />} />
+                    {/* <Route path='/sign-in' element={<Login />} /> */}
+                    {/* роут регистрации */}
+                    {/* <Route path='/sign-up' element={<Register />} /> */}
+                    <Route path='/movies' element={<Movies />} />
+                </Routes>
+            </div>
         </div>
         // </CurrentUserContext.Provider>
     );

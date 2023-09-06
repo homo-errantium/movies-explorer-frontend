@@ -7,6 +7,7 @@ function Navigation(props) {
     return (
         <div
             className={
+                // true
                 props.loggedIn
                     ? 'navigation__container'
                     : 'navigation__container navigation__position-right'
@@ -14,6 +15,7 @@ function Navigation(props) {
         >
             <nav
                 className={
+                    // true
                     props.loggedIn
                         ? 'navigation__movies'
                         : 'navigation__movies navigation__no-display'
@@ -33,36 +35,41 @@ function Navigation(props) {
                 </Link>
             </nav>
             <nav className='navigation__users'>
-                {props.loggedIn ? (
-                    <Link
-                        to='/profile'
-                        className='navigation__link header__account-container'
-                    >
-                        <span className='header__account-title'>Аккаунт</span>
-                        <div className='header__account-logo-container'>
-                            <img
-                                className='header__account-logo'
-                                src={account}
-                                alt='Логотип аккаунта'
-                            />
-                        </div>
-                    </Link>
-                ) : (
-                    <nav className='navigation__authorize'>
+                {
+                    // true
+                    props.loggedIn ? (
                         <Link
-                            to='/signup'
-                            className='navigation__link navigation__link_type_registration'
+                            to='/profile'
+                            className='navigation__link header__account-container'
                         >
-                            Регистрация
+                            <span className='header__account-title'>
+                                Аккаунт
+                            </span>
+                            <div className='header__account-logo-container'>
+                                <img
+                                    className='header__account-logo'
+                                    src={account}
+                                    alt='Логотип аккаунта'
+                                />
+                            </div>
                         </Link>
-                        <Link
-                            to='/signin'
-                            className='navigation__link navigation__link_type_login'
-                        >
-                            Войти
-                        </Link>
-                    </nav>
-                )}
+                    ) : (
+                        <nav className='navigation__authorize'>
+                            <Link
+                                to='/signup'
+                                className='navigation__link navigation__link_type_registration'
+                            >
+                                Регистрация
+                            </Link>
+                            <Link
+                                to='/signin'
+                                className='navigation__link navigation__link_type_login'
+                            >
+                                Войти
+                            </Link>
+                        </nav>
+                    )
+                }
             </nav>
         </div>
     );

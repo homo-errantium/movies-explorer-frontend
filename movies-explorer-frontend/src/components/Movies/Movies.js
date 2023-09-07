@@ -1,7 +1,7 @@
 import './Movies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
-// import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
 function Movies() {
@@ -9,7 +9,7 @@ function Movies() {
         <section className='movies' id='movies  '>
             <Header />
             <SearchForm />
-            {/* <MoviesCardList /> */}
+            <MoviesCardList />
             <Footer />
         </section>
     );

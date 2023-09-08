@@ -26,7 +26,7 @@
 }
 
 .navigation__link:not(:last-child) {
-    margin-right: 30px;
+    margin-right: 17px;
 }
 
 .navigation__no-display {
@@ -70,7 +70,10 @@
 }
 
 .header__account-title {
-    margin-right: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 12px; /* 92.308% */
+    margin-right: 8px;
 }
 
 .navigation__link_type_login {

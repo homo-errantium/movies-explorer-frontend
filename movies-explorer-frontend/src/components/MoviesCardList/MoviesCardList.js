@@ -9,10 +9,16 @@ function MoviesCardList() {
                 <MoviesCard />
                 <MoviesCard />
                 <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
             </ul>
-            <button className={'moviesCardList__more-button'}>Ещё</button>
+            <button
+                className={
+                    true
+                        ? 'moviesCardList__more-button'
+                        : 'moviesCardList__more-button moviesCardList__more-button_invisible'
+                }
+            >
+                Ещё
+            </button>
         </section>
     );
 }

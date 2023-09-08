@@ -3,20 +3,18 @@ import { Link } from 'react-router-dom';
 import './Navigation.css';
 import account from '../../images/account.svg';
 
-function Navigation(props) {
+function Navigation() {
     return (
         <div
             className={
-                // true
-                props.loggedIn
+                true
                     ? 'navigation__container'
                     : 'navigation__container navigation__position-right'
             }
         >
             <nav
                 className={
-                    // true
-                    props.loggedIn
+                    true
                         ? 'navigation__movies'
                         : 'navigation__movies navigation__no-display'
                 }
@@ -35,41 +33,36 @@ function Navigation(props) {
                 </Link>
             </nav>
             <nav className='navigation__users'>
-                {
-                    // true
-                    props.loggedIn ? (
+                {true ? (
+                    <Link
+                        to='/profile'
+                        className='navigation__link header__account-container'
+                    >
+                        <span className='header__account-title'>Аккаунт</span>
+                        <div className='header__account-logo-container'>
+                            <img
+                                className='header__account-logo'
+                                src={account}
+                                alt='Логотип аккаунта'
+                            />
+                        </div>
+                    </Link>
+                ) : (
+                    <nav className='navigation__authorize'>
                         <Link
-                            to='/profile'
-                            className='navigation__link header__account-container'
+                            to='/signup'
+                            className='navigation__link navigation__link_type_registration'
                         >
-                            <span className='header__account-title'>
-                                Аккаунт
-                            </span>
-                            <div className='header__account-logo-container'>
-                                <img
-                                    className='header__account-logo'
-                                    src={account}
-                                    alt='Логотип аккаунта'
-                                />
-                            </div>
+                            Регистрация
                         </Link>
-                    ) : (
-                        <nav className='navigation__authorize'>
-                            <Link
-                                to='/signup'
-                                className='navigation__link navigation__link_type_registration'
-                            >
-                                Регистрация
-                            </Link>
-                            <Link
-                                to='/signin'
-                                className='navigation__link navigation__link_type_login'
-                            >
-                                Войти
-                            </Link>
-                        </nav>
-                    )
-                }
+                        <Link
+                            to='/signin'
+                            className='navigation__link navigation__link_type_login'
+                        >
+                            Войти
+                        </Link>
+                    </nav>
+                )}
             </nav>
         </div>
     );

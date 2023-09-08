@@ -26,3 +26,7 @@
     font-weight: 500;
     border: none;
 }
+
+.moviesCardList__more-button_invisible {
+    display: none;
+}

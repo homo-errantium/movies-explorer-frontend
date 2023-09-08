@@ -48,11 +48,7 @@
     border-radius: 50%;
     height: 24px;
     width: 24px;
-}
-
-.movieCard__delete-button:hover {
-    cursor: pointer;
-    opacity: 0.7;
+    background-color: #313131;
 }
 
 .movieCard__save-button {
@@ -64,7 +60,18 @@
     width: 24px;
 }
 
-.movieCard__save-button:hover {
+.movieCard__active-button {
+    background: url('../../images/movieCard-active-button.svg') center no-repeat;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+}
+
+.movieCard__save-button:hover,
+.movieCard__active-button:hover,
+.movieCard__delete-button:hover {
     cursor: pointer;
     opacity: 0.7;
 }

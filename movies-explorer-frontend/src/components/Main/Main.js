@@ -6,7 +6,7 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-function Main(props) {
+function Main() {
     return (
         <>
             <Header />

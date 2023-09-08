@@ -21,7 +21,7 @@ function MoviesCard() {
             <div className='movieCard__info'>
                 <p className='movieCard__title'>Название фильма</p>
 
-                {false ? (
+                {true ? (
                     <button
                         type='button'
                         className='movieCard__delete-button'
@@ -29,7 +29,9 @@ function MoviesCard() {
                 ) : (
                     <button
                         type='button'
-                        className='movieCard__save-button'
+                        className={`movieCard__save-button ${
+                            true ? 'movieCard__active-button' : ''
+                        }`}
                     ></button>
                 )}
             </div>

@@ -6,6 +6,11 @@
     align-items: center;
     width: 100%;
     padding: 18px 70px;
+    height: 76px;
+}
+
+.header_type_black {
+    background-color: #202020;
 }
 
 .header__logo {
@@ -16,4 +21,11 @@
 
 .header__logo:hover {
     opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 18px 30px;
+        min-height: 36px;
+    }
 }

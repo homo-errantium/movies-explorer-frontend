@@ -20,3 +20,24 @@
     right: 70px;
     bottom: 60px;
 }
+
+@media (max-width: 768px) {
+    .promo {
+        padding: 299px 44px 296px;
+        min-height: 559px;
+    }
+
+    .promo__title {
+        max-width: 680px;
+        text-align: center;
+        margin-bottom: 144px;
+    }
+    .promo__image {
+        width: 680px;
+        height: 230px;
+        opacity: 0.7;
+        position: absolute;
+        right: 45px;
+        bottom: 71px;
+    }
+}

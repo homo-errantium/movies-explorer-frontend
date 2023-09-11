@@ -47,3 +47,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 60px 30px 20px;
+    }
+}

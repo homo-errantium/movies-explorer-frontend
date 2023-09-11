@@ -8,8 +8,9 @@ import Main from '../Main/Main';
 // import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
-// import Login from './Login';
-// import Register from './Register';
+import Login from '../Login/Login';
+import NotFound from '../NotFound/NotFound';
+import Register from '../Register/Register';
 
 // import EditProfilePopup from './EditProfilePopup';
 // import EditAvatarPopup from './EditAvatarPopup';
@@ -28,12 +29,12 @@ function App() {
         <div className='page'>
             <div className='page__container'>
                 <Routes>
+                    <Route path='/signin' element={<Login />} />
+                    <Route path='/signup' element={<Register />} />
                     <Route path='/' element={<Main />} />
-                    {/* <Route path='/sign-in' element={<Login />} /> */}
-                    {/* роут регистрации */}
-                    {/* <Route path='/sign-up' element={<Register />} /> */}
                     <Route path='/movies' element={<Movies />} />
                     <Route path='/profile' element={<Profile />} />
+                    <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>
         </div>

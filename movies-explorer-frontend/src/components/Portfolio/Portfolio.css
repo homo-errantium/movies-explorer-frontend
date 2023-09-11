@@ -53,3 +53,14 @@
     border-bottom: 1px solid #424242;
     margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+    .portfolio {
+        padding: 90px 50px 90px;
+    }
+
+    .portfolio__text {
+        font-size: 28px;
+        letter-spacing: -1.12px;
+    }
+}

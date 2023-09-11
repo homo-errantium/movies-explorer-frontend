@@ -57,3 +57,29 @@
     line-height: normal;
     letter-spacing: -0.56px;
 }
+
+@media (max-width: 768px) {
+    .techs {
+        min-height: 567px;
+        padding: 90px 50px;
+    }
+    .techs__title {
+        margin-bottom: 80px;
+    }
+
+    .techs__subtitle {
+        margin-bottom: 23px;
+    }
+    .techs__description {
+        font-size: 12px;
+        line-height: 18px; /* 150% */
+        letter-spacing: -0.48px;
+        margin-bottom: 83px;
+    }
+    .techs__list-item {
+        width: 84px;
+        height: 57px;
+        letter-spacing: -0.48px;
+        font-size: 12px;
+    }
+}

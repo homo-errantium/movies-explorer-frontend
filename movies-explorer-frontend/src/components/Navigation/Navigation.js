@@ -7,33 +7,27 @@ function Navigation() {
     return (
         <div
             className={
-                true
+                false
                     ? 'navigation__container'
-                    : 'navigation__container navigation__position-right'
+                    : 'navigation__container navigation__container_position_right'
             }
         >
-            <nav
-                className={
-                    true
-                        ? 'navigation__movies'
-                        : 'navigation__movies navigation__no-display'
-                }
-            >
-                <Link
-                    to='/movies'
-                    className='navigation__link navigation__link_type_movies'
-                >
-                    Фильмы
-                </Link>
-                <Link
-                    to='/saved-movies'
-                    className='navigation__link navigation__link_type_movies'
-                >
-                    Сохранённые фильмы
-                </Link>
-            </nav>
-            <nav className='navigation__users'>
-                {true ? (
+            {true ? (
+                <>
+                    <nav className='navigation__movies'>
+                        <Link
+                            to='/movies'
+                            className='navigation__link navigation__link_type_movies'
+                        >
+                            Фильмы
+                        </Link>
+                        <Link
+                            to='/saved-movies'
+                            className='navigation__link navigation__link_type_movies'
+                        >
+                            Сохранённые фильмы
+                        </Link>
+                    </nav>
                     <Link
                         to='/profile'
                         className='navigation__link header__account-container'
@@ -47,23 +41,30 @@ function Navigation() {
                             />
                         </div>
                     </Link>
-                ) : (
-                    <nav className='navigation__authorize'>
-                        <Link
-                            to='/signup'
-                            className='navigation__link navigation__link_type_registration'
-                        >
-                            Регистрация
-                        </Link>
-                        <Link
-                            to='/signin'
-                            className='navigation__link navigation__link_type_login'
-                        >
-                            Войти
-                        </Link>
-                    </nav>
-                )}
-            </nav>
+                    <button className='navigation__burger-button'>
+                        <span className='navigation__burger-button-element'>
+                            {' '}
+                        </span>
+                        <span className='navigation__burger-button-element'></span>
+                        <span className='navigation__burger-button-element'></span>
+                    </button>
+                </>
+            ) : (
+                <nav className='navigation__authorize'>
+                    <Link
+                        to='/signup'
+                        className='navigation__link navigation__link_type_registration'
+                    >
+                        Регистрация
+                    </Link>
+                    <Link
+                        to='/signin'
+                        className='navigation__link navigation__link_type_login'
+                    >
+                        Войти
+                    </Link>
+                </nav>
+            )}
         </div>
     );
 }

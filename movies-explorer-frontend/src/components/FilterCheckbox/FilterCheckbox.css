@@ -42,3 +42,8 @@
     background-color: #2be080;
     background-image: url('../../images/toggle-round.svg');
 }
+@media (max-width: 768px) {
+    .searchForm__toggle-form {
+        margin: 0px 15px 0 19px;
+    }
+}

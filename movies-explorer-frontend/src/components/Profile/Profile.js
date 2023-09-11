@@ -17,7 +17,7 @@ function Profile() {
                             <input
                                 name='name'
                                 className='profile__input'
-                                id='name-input'
+                                id='profile__name-input'
                                 type='text'
                                 required
                                 value={'Виталий'}
@@ -35,7 +35,7 @@ function Profile() {
                             <input
                                 name='email'
                                 className='profile__input'
-                                id='email-input'
+                                id='profile__email-input'
                                 type='email'
                                 required
                                 value={'pochta@yandex.ru'}

@@ -44,11 +44,8 @@
 
 .about-project__time-info-title {
     min-height: 36px;
-    font-family: Inter;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     background: #303030;
     display: flex;
     align-items: center;
@@ -70,4 +67,25 @@
 .about-project__time-info-title_green-element {
     color: #000000;
     background: #3ddc84;
+}
+
+@media (max-width: 768px) {
+    .about-project {
+        padding: 90px 50px;
+        min-height: 584px;
+    }
+
+    .about-project__main-info-item {
+        gap: 22px;
+    }
+    .about-project__main-info-description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .about-project__main-info {
+        margin-bottom: 93px;
+    }
+    .about-project__time-info {
+        grid-template-columns: 140px 4fr;
+    }
 }

@@ -5,7 +5,8 @@ import Navigation from '../Navigation/Navigation';
 
 function Header() {
     return (
-        <header className='header'>
+        /*цвет шапки*/
+        <header className={true ? 'header' : 'header header_type_black'}>
             <Link className='header__logo' to='/'>
                 <img className='header__logo' src={logo} alt='Логотип сайта' />
             </Link>

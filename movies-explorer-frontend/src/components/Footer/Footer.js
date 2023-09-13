@@ -8,7 +8,7 @@ function Footer() {
                 Учебный проект Яндекс.Практикум х BeatFilm.
             </h3>
             <div className='footer__info'>
-                <span className='footer__year'>&copy; 2023 Айшат Сафин</span>
+                <span className='footer__year'>&copy; 2023</span>
                 <div className='footer__links'>
                     <a
                         className='footer__link'

@@ -33,6 +33,9 @@
     display: none;
 }
 
+.navigation__display {
+    display: block;
+}
 .navigation__link_type_movies {
     font-size: 13px;
     font-weight: 400;
@@ -100,6 +103,10 @@
     opacity: 0.7;
 }
 
+.navigation__burger-menu {
+    display: none;
+}
+
 .navigation__burger-button {
     display: none;
     height: 44px;
@@ -149,5 +156,20 @@
 
     .navigation__burger-button {
         display: block;
+    }
+}
+
+@media (max-width: 320px) {
+    .navigation__link {
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    .navigation__link:not(:last-child) {
+        margin-right: 14px;
+    }
+
+    .navigation__link_type_login {
+        padding: 8px 12px 6px;
     }
 }

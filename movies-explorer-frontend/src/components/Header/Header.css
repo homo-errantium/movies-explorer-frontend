@@ -6,7 +6,8 @@
     align-items: center;
     width: 100%;
     padding: 18px 70px;
-    height: 76px;
+    height: 74px;
+    position: relative;
 }
 
 .header_type_black {
@@ -27,5 +28,15 @@
     .header {
         padding: 18px 30px;
         min-height: 36px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header {
+        padding: 18px 14px;
+        min-height: 36px;
+    }
+    .header__logo {
+        margin-right: 122px;
     }
 }

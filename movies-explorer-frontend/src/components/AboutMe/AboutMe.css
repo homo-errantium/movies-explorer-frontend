@@ -106,3 +106,39 @@
         max-width: 364px;
     }
 }
+
+@media (max-width: 320px) {
+    .about-me {
+        padding: 74px 14px 0;
+    }
+
+    .about-me__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        height: 50px;
+        margin: 0 0 60px 0;
+    }
+    .about-me__info {
+        flex-direction: column-reverse;
+        gap: 38px;
+    }
+
+    .about-me__profile-photo {
+        width: 292px;
+        height: 352px;
+    }
+    .about-me__student-name {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin-bottom: 18px;
+    }
+    .about-me__student-specialization {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+    }
+    .about-me__student-info {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+        margin-bottom: 54px;
+    }
+}

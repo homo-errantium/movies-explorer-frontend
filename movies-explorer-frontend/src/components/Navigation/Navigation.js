@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import account from '../../images/account.svg';
 
 function Navigation() {
@@ -12,7 +13,7 @@ function Navigation() {
                     : 'navigation__container navigation__container_position_right'
             }
         >
-            {true ? (
+            {false ? (
                 <>
                     <nav className='navigation__movies'>
                         <Link
@@ -42,12 +43,11 @@ function Navigation() {
                         </div>
                     </Link>
                     <button className='navigation__burger-button'>
-                        <span className='navigation__burger-button-element'>
-                            {' '}
-                        </span>
+                        <span className='navigation__burger-button-element'></span>
                         <span className='navigation__burger-button-element'></span>
                         <span className='navigation__burger-button-element'></span>
                     </button>
+                    {false ? <BurgerMenu /> : ''}
                 </>
             ) : (
                 <nav className='navigation__authorize'>

@@ -31,3 +31,23 @@
 .not-found__back-link:hover {
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .not-found {
+        padding: 204px 184px 111px;
+    }
+
+    .not-found__title {
+        font-size: 70px;
+        margin-bottom: 2px;
+    }
+
+    .not-found__description {
+        font-size: 8px;
+        margin-bottom: 91px;
+    }
+
+    .not-found__back-link {
+        font-size: 7px;
+    }
+}

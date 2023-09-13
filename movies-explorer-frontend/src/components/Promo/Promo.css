@@ -41,3 +41,23 @@
         bottom: 71px;
     }
 }
+
+@media (max-width: 320px) {
+    .promo {
+        padding: 183px 10px 270px;
+        min-height: 559px;
+    }
+    .promo__title {
+        max-width: 300px;
+        margin-bottom: 60px;
+        font-size: 31px;
+        line-height: 39px; /* 125.806% */
+        letter-spacing: -1.24px;
+    }
+    .promo__image {
+        object-fit: cover;
+        width: 320px;
+        right: 0;
+        bottom: 40px;
+    }
+}

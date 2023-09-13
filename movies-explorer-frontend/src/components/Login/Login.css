@@ -108,3 +108,9 @@
 .login__reg-link:hover {
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .login {
+        padding: 232px 186px 232px;
+    }
+}

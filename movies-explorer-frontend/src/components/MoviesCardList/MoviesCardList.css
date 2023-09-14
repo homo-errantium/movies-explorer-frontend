@@ -49,3 +49,18 @@
         /* margin-bottom: 60px; */
     }
 }
+
+@media (max-width: 320px) {
+    .moviesCardList {
+        padding: 49px 10px 98px;
+    }
+
+    .moviesCardList__list {
+        display: grid;
+        grid-template-columns: 300px;
+        grid-row-gap: 33px;
+    }
+    .moviesCardList__more-button {
+        width: 240px;
+    }
+}

@@ -117,3 +117,36 @@
         padding: 232px 186px 232px;
     }
 }
+
+@media (max-width: 320px) {
+    .register {
+        padding: 56px 30px 30px;
+        align-items: center;
+    }
+    .register__logo-link {
+        margin-bottom: 46px;
+    }
+    .register__title {
+        margin-bottom: 80px;
+    }
+    .register__form {
+        width: 260px;
+    }
+    .register__fieldset {
+        width: 100%;
+    }
+    .register__line {
+        width: 100%;
+    }
+
+    .register__enter-button {
+        font-size: 12px;
+    }
+    .register__reg-description {
+        font-size: 12px;
+    }
+    .register__enter-button {
+        margin-bottom: 14px;
+        padding-bottom: 0;
+    }
+}

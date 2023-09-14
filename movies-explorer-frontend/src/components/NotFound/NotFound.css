@@ -51,3 +51,20 @@
         font-size: 7px;
     }
 }
+
+@media (max-width: 320px) {
+    .not-found {
+        padding: 329px 80px 30px;
+    }
+    .not-found__title {
+        font-size: 80px;
+        margin-bottom: 10px;
+    }
+    .not-found__description {
+        font-size: 12px;
+        margin-bottom: 284px;
+    }
+    .not-found__back-link {
+        font-size: 12px;
+    }
+}

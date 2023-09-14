@@ -81,3 +81,12 @@
         margin-bottom: 10px;
     }
 }
+
+@media (max-width: 320px) {
+    .movieCard {
+        max-width: 300px;
+    }
+    .movieCard__trailer-link {
+        margin-bottom: 6px;
+    }
+}

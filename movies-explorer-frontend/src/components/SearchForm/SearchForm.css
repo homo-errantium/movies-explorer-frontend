@@ -109,3 +109,38 @@
         margin-top: 110px;
     }
 }
+
+@media (max-width: 320px) {
+    .searchForm {
+        padding: 80px 10px 0;
+    }
+    .searchForm__form {
+        flex-wrap: wrap;
+        padding: 19px;
+        row-gap: 54px;
+    }
+    .searchForm__label {
+        display: none;
+    }
+    .searchForm__input {
+        width: 200px;
+    }
+    .searchForm__input::placeholder {
+        font-size: 14px;
+        line-height: normal;
+    }
+    .searchForm__toggle-box {
+        border: none;
+        margin-left: 36px;
+    }
+
+    .searchForm__toggle-title {
+        font-size: 11px;
+    }
+    .searchFrom__line {
+        margin-top: 109px;
+    }
+    .searchForm__button {
+        margin-right: 0;
+    }
+}

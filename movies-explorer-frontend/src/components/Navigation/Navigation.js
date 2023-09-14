@@ -8,12 +8,12 @@ function Navigation() {
     return (
         <div
             className={
-                false
+                true
                     ? 'navigation__container'
                     : 'navigation__container navigation__container_position_right'
             }
         >
-            {false ? (
+            {true ? (
                 <>
                     <nav className='navigation__movies'>
                         <Link

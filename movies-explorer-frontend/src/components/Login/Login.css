@@ -114,3 +114,37 @@
         padding: 232px 186px 232px;
     }
 }
+
+@media (max-width: 320px) {
+    .login {
+        padding: 56px 30px 30px;
+        align-items: center;
+    }
+    .login__logo-link {
+        margin-bottom: 46px;
+    }
+    .login__title {
+        margin-bottom: 80px;
+    }
+    .login__form {
+        width: 260px;
+    }
+    .login__fieldset {
+        width: 100%;
+        margin-bottom: 285px;
+    }
+    .login__line {
+        width: 100%;
+    }
+
+    .login__enter-button {
+        font-size: 12px;
+    }
+    .login__reg-description {
+        font-size: 12px;
+    }
+    .login__enter-button {
+        margin-bottom: 14px;
+        padding-bottom: 0;
+    }
+}

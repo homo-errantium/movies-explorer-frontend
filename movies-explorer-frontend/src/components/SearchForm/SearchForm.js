@@ -30,7 +30,6 @@ function SearchForm() {
                     </h3>
                 </div>
             </form>
-            <hr className='searchFrom__line' />
         </secction>
     );
 }

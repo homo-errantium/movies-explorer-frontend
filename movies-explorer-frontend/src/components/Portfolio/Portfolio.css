@@ -26,6 +26,7 @@
 
 .portfolio__link:hover {
     color: #a0a0a0;
+    cursor: pointer;
 }
 
 .portfolio__text {
@@ -40,6 +41,9 @@
 
 .portfolio__text_marginless {
     margin-bottom: 0;
+}
+.portfolio__image {
+    padding: 0 6px 15px 0;
 }
 
 .portfolio__link_border-bottom {

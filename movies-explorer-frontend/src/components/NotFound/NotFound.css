@@ -29,26 +29,27 @@
 }
 
 .not-found__back-link:hover {
-    opacity: 0.8;
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 @media (max-width: 768px) {
     .not-found {
-        padding: 204px 184px 111px;
+        padding: 407px 184px 111px;
     }
 
     .not-found__title {
-        font-size: 70px;
-        margin-bottom: 2px;
+        font-size: 140px;
+        margin-bottom: 4px;
     }
 
     .not-found__description {
-        font-size: 8px;
-        margin-bottom: 91px;
+        font-size: 16px;
+        margin-bottom: 184px;
     }
 
     .not-found__back-link {
-        font-size: 7px;
+        font-size: 14px;
     }
 }
 

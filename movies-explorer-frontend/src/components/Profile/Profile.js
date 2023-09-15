@@ -26,7 +26,6 @@ function Profile() {
                                 {'Ошибка'}
                             </span>
                         </label>
-                        <hr className='profile__line' />
                         <label
                             htmlFor='profile-label'
                             className='profile__label'

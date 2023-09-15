@@ -114,6 +114,9 @@
         padding: 74px 14px 0;
     }
 
+    .about-me__description {
+        max-width: 292px;
+    }
     .about-me__title {
         font-size: 18px;
         letter-spacing: -0.72px;

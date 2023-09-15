@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
+// import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import TestBurgerMenu from '../TestBurgerMenu/TestBurgerMenu';
 import account from '../../images/account.svg';
 
 function Navigation() {
     return (
         <div
             className={
+                // отображение позиции меню
                 true
                     ? 'navigation__container'
                     : 'navigation__container navigation__container_position_right'
             }
         >
+            {/* отображение меню не-/авторизованного пользователя  */}
             {true ? (
                 <>
                     <nav className='navigation__movies'>
@@ -42,12 +45,15 @@ function Navigation() {
                             />
                         </div>
                     </Link>
-                    <button className='navigation__burger-button'>
+                    <TestBurgerMenu />
+
+                    {/* запасной вариант */}
+                    {/* <button className='navigation__burger-button'>
                         <span className='navigation__burger-button-element'></span>
                         <span className='navigation__burger-button-element'></span>
                         <span className='navigation__burger-button-element'></span>
                     </button>
-                    {false ? <BurgerMenu /> : ''}
+                    {false ? <BurgerMenu /> : ''} */}
                 </>
             ) : (
                 <nav className='navigation__authorize'>

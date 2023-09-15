@@ -30,7 +30,6 @@ function Register() {
                             {'Ошибка'}
                         </span>
                     </label>
-                    <hr className='register__line' />
                     <label htmlFor='register-label' className='register__label'>
                         E-mail
                         <input
@@ -45,7 +44,6 @@ function Register() {
                             {'Ошибка'}
                         </span>
                     </label>
-                    <hr className='register__line' />
                     <label htmlFor='register-label' className='register__label'>
                         Пароль
                         <input
@@ -58,7 +56,6 @@ function Register() {
                             minLength='8'
                             disabled={false ? true : false}
                         />
-                        <hr className='register__line' />
                         <span className='register__input-error'>
                             {'Что-то пошло не так'}
                         </span>

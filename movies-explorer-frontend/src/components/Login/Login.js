@@ -28,7 +28,7 @@ function Login() {
                         />
                         <span className='login__input-error'>{'Ошибка'}</span>
                     </label>
-                    <hr className='login__line' />
+
                     <label htmlFor='login-label' className='login__label'>
                         Пароль
                         <input
@@ -43,7 +43,6 @@ function Login() {
                         />
                         <span className='login__input-error'>{'Ошибка'}</span>
                     </label>
-                    <hr className='login__line' />
                 </fieldset>
                 <button
                     className='login__enter-button'

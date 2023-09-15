@@ -66,9 +66,12 @@
     font-size: 11px;
     line-height: 13px;
     border: none;
-    outline: none;
+    /* outline: none; */
     background-color: #202020;
     font-style: normal;
+}
+.profile__input:focus {
+    outline-color: grey;
 }
 
 .profile__input-error {
@@ -81,12 +84,6 @@
     top: 16px;
     right: 0;
     text-align: right;
-}
-
-.profile__line {
-    width: 410px;
-    border-bottom: 1px solid #424242;
-    margin-bottom: 17px;
 }
 
 .profile__save-button {

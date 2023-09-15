@@ -1,27 +1,27 @@
-.movieCard {
+.movie-card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 340px;
 }
 
-.movieCard__trailer-link {
+.movie-card__trailer-link {
     width: 100%;
     max-height: 190px;
     margin-bottom: 6px;
 }
 
-.movieCard__trailer-link:hover {
+.movie-card__trailer-link:hover {
     opacity: 0.8;
     cursor: pointer;
 }
 
-.movieCard__image {
+.movie-card__image {
     width: 100%;
     object-fit: cover;
 }
 
-.movieCard__info {
+.movie-card__info {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -30,19 +30,19 @@
     margin-bottom: 5px;
 }
 
-.movieCard__title {
+.movie-card__title {
     font-size: 13px;
     font-weight: 500;
     line-height: 22px;
 }
 
-.movieCard__duration {
+.movie-card__duration {
     color: #8b8b8b;
     font-size: 11px;
     font-weight: 400;
 }
 
-.movieCard__delete-button {
+.movie-card__delete-button {
     background: url('../../images/movieCard-delete-button.svg') center no-repeat;
     border: none;
     outline: none;
@@ -52,7 +52,7 @@
     background-color: #313131;
 }
 
-.movieCard__save-button {
+.movie-card__save-button {
     background: url('../../images/movieCard-save-button.svg') center no-repeat;
     border: none;
     outline: none;
@@ -61,7 +61,7 @@
     width: 24px;
 }
 
-.movieCard__active-button {
+.movie-card__active-button {
     background: url('../../images/movieCard-active-button.svg') center no-repeat;
     border: none;
     outline: none;
@@ -70,33 +70,33 @@
     width: 24px;
 }
 
-.movieCard__save-button:hover,
-.movieCard__active-button:hover,
-.movieCard__delete-button:hover {
+.movie-card__save-button:hover,
+.movie-card__active-button:hover,
+.movie-card__delete-button:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
 @media (max-width: 1439px) {
-    .movieCard {
+    .movie-card {
         max-width: 28%;
     }
 }
 
 @media (max-width: 768px) {
-    .movieCard {
+    .movie-card {
         max-width: 100%;
     }
-    .movieCard__trailer-link {
+    .movie-card__trailer-link {
         margin-bottom: 10px;
     }
 }
 
 @media (max-width: 320px) {
-    .movieCard {
+    .movie-card {
         max-width: 300px;
     }
-    .movieCard__trailer-link {
+    .movie-card__trailer-link {
         margin-bottom: 6px;
     }
 }

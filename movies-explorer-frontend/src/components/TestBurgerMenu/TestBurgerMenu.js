@@ -6,29 +6,29 @@ import account from '../../images/account.svg';
 function TestBurgerMenu() {
     return (
         <div className='menu__container'>
-            <input class='menu-btn' type='checkbox' id='menu-btn' />
-            <label class='menu-icon' for='menu-btn'>
-                <span class='navicon' />
+            <input className='menu__button' type='checkbox' id='menu-btn' />
+            <label className='menu__label' for='menu-btn'>
+                <span class='menu__button-image' />
             </label>
 
-            <nav class='menu'>
-                <Link to='/' className='nav-item'>
+            <nav className='menu'>
+                <Link to='/' className='menu__link'>
                     Главная
                 </Link>
-                <Link to='/movies' className='nav-item'>
+                <Link to='/movies' className='menu__link'>
                     Фильмы
                 </Link>
-                <Link to='/saved-movies' className='nav-item'>
+                <Link to='/saved-movies' className='menu__link'>
                     Сохранённые фильмы
                 </Link>
                 <Link
                     to='/profile'
-                    className=' burger-menu__account-container nav-item'
+                    className='menu__account-container menu__link'
                 >
-                    <span className='burger-menu__account-title'>Аккаунт</span>
-                    <div className='burger-menu__account-logo-container'>
+                    <span className='menu__account-title'>Аккаунт</span>
+                    <div className='menu__account-logo-container'>
                         <img
-                            className='burger-menu__account-logo'
+                            className='menu__account-logo'
                             src={account}
                             alt='Логотип аккаунта'
                         />

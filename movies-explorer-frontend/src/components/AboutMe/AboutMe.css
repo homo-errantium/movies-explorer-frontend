@@ -109,6 +109,14 @@
     }
 }
 
+@media (max-width: 680px) {
+    .about-me__info {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 38px;
+    }
+}
+
 @media (max-width: 320px) {
     .about-me {
         padding: 74px 14px 0;

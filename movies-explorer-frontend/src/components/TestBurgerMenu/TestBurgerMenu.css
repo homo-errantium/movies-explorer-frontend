@@ -4,13 +4,13 @@
     background: transparent;
 }
 
-.menu-btn {
+.menu__button {
     position: absolute;
     top: -100%;
     left: -100%;
 }
 
-.burger-menu__account-container {
+.menu__account-container {
     display: flex;
     box-sizing: border-box;
     padding-left: 11px;
@@ -20,14 +20,14 @@
     gap: 7px;
 }
 
-.burger-menu__account-title {
+.menu__account-title {
     color: #fff;
     font-size: 13px;
     font-weight: 500;
     line-height: 12px; /* 92.308% */
 }
 
-.burger-menu__account-logo-container {
+.menu__account-logo-container {
     width: 26px;
     height: 26px;
     border-radius: 50px;
@@ -35,7 +35,7 @@
     margin: 3px 4px 3px 0;
     position: relative;
 }
-.burger-menu__account-logo {
+.menu__account-logo {
     width: 12px;
     height: 12px;
     position: absolute;
@@ -57,7 +57,7 @@
         visibility: visible;
     }
 
-    .menu-icon {
+    .menu__label {
         cursor: pointer;
         display: flex;
         justify-content: flex-end;
@@ -68,7 +68,7 @@
         visibility: visible;
     }
 
-    .navicon {
+    .menu__button-image {
         background: #fff;
         display: block;
         height: 3px;
@@ -76,16 +76,16 @@
         position: relative;
     }
 
-    .navicon:before {
+    .menu__button-image:before {
         top: 10px;
     }
 
-    .navicon:after {
+    .menu__button-image:after {
         top: -10px;
     }
 
-    .navicon:before,
-    .navicon:after {
+    .menu__button-image:before,
+    .menu__button-image:after {
         background: #fff;
         display: block;
         width: 100%;
@@ -108,7 +108,7 @@
         background-color: #202020;
     }
 
-    .nav-item {
+    .menu__link {
         text-decoration: none;
         font-style: normal;
         font-weight: 500;
@@ -119,38 +119,38 @@
         width: max-content;
         border-bottom: 2px solid transparent;
     }
-    .nav-item:hover {
+    .menu__link:hover {
         border-bottom: 2px solid #fff;
     }
-    .nav-item:last-child {
+    .menu__link:last-child {
         margin-top: 593px;
         margin-bottom: 90px;
     }
 
-    .menu-btn:checked ~ .menu {
+    .menu__button:checked ~ .menu {
         max-height: 100vh;
     }
 
-    .menu-btn:checked ~ .menu-icon .navicon {
+    .menu__button:checked ~ .menu__label .menu__button-image {
         background: transparent;
         width: 22px;
     }
 
-    .menu-btn:checked ~ .menu-icon {
+    .menu__button:checked ~ .menu__label {
         padding-right: 27px;
         margin-bottom: 86px;
     }
 
-    .menu-btn:checked ~ .menu-icon .navicon:before {
+    .menu__button:checked ~ .menu__label .menu__button-image:before {
         transform: rotate(-45deg);
     }
 
-    .menu-btn:checked ~ .menu-icon .navicon:after {
+    .menu__button:checked ~ .menu__label .menu__button-image:after {
         transform: rotate(45deg);
     }
 
-    .menu-btn:checked ~ .menu-icon .navicon:before,
-    .menu-btn:checked ~ .menu-icon .navicon:after {
+    .menu__button:checked ~ .menu__label .menu__button-image:before,
+    .menu__button:checked ~ .menu__label .menu__button-image:after {
         top: 0;
     }
 }
@@ -159,19 +159,19 @@
     .menu__container {
         width: 320px;
     }
-    .menu-btn:checked ~ .menu-icon {
+    .menu__button:checked ~ .menu__label {
         padding-right: 18px;
         padding-top: 27px;
         margin-bottom: 80px;
     }
-    .menu-btn:checked ~ .menu {
+    .menu__button:checked ~ .menu {
         max-height: 635px;
     }
 
     .menu {
         gap: 22px;
     }
-    .navicon {
+    .menu__button-image {
         background: #fff;
         display: block;
         height: 3px;
@@ -179,18 +179,21 @@
         position: relative;
     }
 
-    .navicon:before {
+    .menu__button-image:before {
         top: 9px;
     }
 
-    .navicon:after {
+    .menu__button-image:after {
         top: -9px;
     }
     .searchForm__form:after {
         bottom: -224px;
     }
-    .nav-item:last-child {
+    .menu__link:last-child {
         margin-top: 419px;
         margin-bottom: 90px;
+    }
+    .menu__label {
+        padding-right: 23px;
     }
 }

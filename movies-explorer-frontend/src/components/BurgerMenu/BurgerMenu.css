@@ -33,7 +33,7 @@
         background: url('../../images/burger-menu-close-button.svg') no-repeat
             center;
         border: none;
-        outline: none;
+        /* outline: none; */
         height: 22px;
         width: 22px;
         right: 27px;

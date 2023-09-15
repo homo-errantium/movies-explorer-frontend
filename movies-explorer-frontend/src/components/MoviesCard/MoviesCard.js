@@ -4,38 +4,38 @@ import forExample from '../../images/for_example.jpg'; //delete after connection
 
 function MoviesCard() {
     return (
-        <li className='movieCard'>
+        <li className='movie-card'>
             <a
-                className='movieCard__trailer-link'
+                className='movie-card__trailer-link'
                 href='ya.ru'
                 target='_blank'
                 rel='noreferrer'
             >
                 <img
-                    className='movieCard__image'
+                    className='movie-card__image'
                     alt='постер к фильму'
                     src={forExample}
                 />
             </a>
 
-            <div className='movieCard__info'>
-                <p className='movieCard__title'>Название фильма</p>
+            <div className='movie-card__info'>
+                <p className='movie-card__title'>Название фильма</p>
 
                 {true ? (
                     <button
                         type='button'
-                        className='movieCard__delete-button'
+                        className='movie-card__delete-button'
                     ></button>
                 ) : (
                     <button
                         type='button'
-                        className={`movieCard__save-button ${
-                            true ? 'movieCard__active-button' : ''
+                        className={`movie-card__save-button ${
+                            true ? 'movie-card__active-button' : ''
                         }`}
                     ></button>
                 )}
             </div>
-            <p className='movieCard__duration'>1ч 33м</p>
+            <p className='movie-card__duration'>1ч 33м</p>
         </li>
     );
 }

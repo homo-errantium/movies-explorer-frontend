@@ -58,11 +58,14 @@
     color: #fff;
     width: 100%;
     border: none;
-    outline: none;
+    /* outline: none; */
     background-color: #202020;
     font-size: 14px;
     font-weight: 500;
     padding: 6px 0 9px;
+}
+.login__input:focus {
+    outline-color: grey;
 }
 
 .login__input-error {

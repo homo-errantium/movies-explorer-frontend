@@ -4,8 +4,8 @@ import React from 'react';
 
 function MoviesCardList() {
     return (
-        <section className='moviesCardList'>
-            <ul className='moviesCardList__list'>
+        <section className='movies-card-list'>
+            <ul className='movies-card-list__list'>
                 <MoviesCard />
                 <MoviesCard />
                 <MoviesCard />
@@ -18,8 +18,8 @@ function MoviesCardList() {
             <button
                 className={
                     true
-                        ? 'moviesCardList__more-button'
-                        : 'moviesCardList__more-button moviesCardList__more-button_invisible'
+                        ? 'movies-card-list__more-button'
+                        : 'movies-card-list__more-button movies-card-list__more-button_type-invisible'
                 }
             >
                 Ещё

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
@@ -11,17 +11,6 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import Register from '../Register/Register';
-
-// import EditProfilePopup from './EditProfilePopup';
-// import EditAvatarPopup from './EditAvatarPopup';
-// import AddPlacePopup from './AddPlacePopup';
-// import ImagePopup from './ImagePopup';
-// import InfoTooltip from './InfoTooltip';
-
-// import api from '../utils/Api';
-// import * as auth from '../utils/Auth';
-// import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
     return (

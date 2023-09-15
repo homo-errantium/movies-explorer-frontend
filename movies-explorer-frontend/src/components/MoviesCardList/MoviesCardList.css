@@ -1,11 +1,11 @@
-.moviesCardList {
+.movies-card-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 83px 70px 100px;
 }
 
-.moviesCardList__list {
+.movies-card-list__list {
     display: grid;
     grid-template-columns: repeat(4, 270px);
     grid-column-gap: 20px;
@@ -14,7 +14,7 @@
     margin-bottom: 60px;
 }
 
-.moviesCardList__more-button {
+.movies-card-list__more-button {
     width: 320px;
     height: 36px;
     border-radius: 6px;
@@ -27,19 +27,19 @@
     border: none;
 }
 
-.moviesCardList__more-button:hover {
+.movies-card-list__more-button:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
-.moviesCardList__more-button_invisible {
+.movies-card-list__more-button_type-invisible {
     display: none;
 }
 @media (max-width: 1439px) {
-    .moviesCardList {
+    .movies-card-list {
         padding: 78px 5.5% 98px;
     }
-    .moviesCardList__list {
+    .movies-card-list__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -48,11 +48,11 @@
     }
 }
 @media (max-width: 768px) {
-    .moviesCardList {
+    .movies-card-list {
         padding: 78px 30px 98px;
     }
 
-    .moviesCardList__list {
+    .movies-card-list__list {
         display: grid;
         grid-template-columns: repeat(2, 339px);
         grid-column-gap: 30px;
@@ -61,11 +61,11 @@
     }
 }
 @media (max-width: 700px) {
-    .moviesCardList {
+    .movies-card-list {
         padding: 78px 30px 98px;
     }
 
-    .moviesCardList__list {
+    .movies-card-list__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -77,22 +77,24 @@
 }
 
 @media (max-width: 685px) {
-    .moviesCardList__list {
+    .movies-card-list__list {
         flex-direction: column;
     }
 }
 
 @media (max-width: 320px) {
-    .moviesCardList {
+    .movies-card-list {
         padding: 49px 10px 98px;
     }
 
-    .moviesCardList__list {
+    .movies-card-list__list {
         display: grid;
         grid-template-columns: 300px;
         grid-row-gap: 33px;
+        padding: 0;
+        margin-bottom: 58px;
     }
-    .moviesCardList__more-button {
+    .movies-card-list__more-button {
         width: 240px;
     }
 }

@@ -1,6 +1,5 @@
 .techs {
     padding: 100px 70px;
-    min-height: 625px;
     background: #272727;
 }
 
@@ -11,7 +10,7 @@
     line-height: normal;
     letter-spacing: -0.88px;
     border-bottom: 1px solid #dadada;
-    height: 50px;
+    padding-bottom: 23px;
     margin: 0 0 90px 0;
 }
 
@@ -61,7 +60,6 @@
 @media (max-width: 768px) {
     .techs {
         background: #272727;
-        min-height: 565px;
         padding: 89px 50px;
     }
     .techs__title {

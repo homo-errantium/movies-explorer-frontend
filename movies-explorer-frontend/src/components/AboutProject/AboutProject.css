@@ -1,15 +1,23 @@
 .about-project {
     padding: 111px 70px;
-    min-height: 608px;
 }
 
 .about-project__title {
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -0.88px;
+    position: relative;
+    padding-bottom: 25px;
+    margin-bottom: 69px;
+}
+.about-project__title:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 0;
+    bottom: 1px;
     border-bottom: 1px solid #dadada;
-    height: 50px;
-    margin: 0 0 70px 0;
 }
 
 .about-project__main-info {
@@ -43,7 +51,7 @@
 }
 
 .about-project__time-info-title {
-    min-height: 36px;
+    line-height: 2.6;
     font-size: 14px;
     font-weight: 400;
     background: #303030;
@@ -72,7 +80,6 @@
 @media (max-width: 768px) {
     .about-project {
         padding: 92px 50px;
-        min-height: 587px;
     }
 
     .about-project__main-info-item {
@@ -127,7 +134,6 @@
 
     .about-project__time-info-title {
         font-size: 11px;
-        min-height: 35px;
     }
 
     .about-project__time-info-description {

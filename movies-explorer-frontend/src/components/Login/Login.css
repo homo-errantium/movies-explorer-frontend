@@ -35,7 +35,6 @@
 .login__label {
     display: flex;
     flex-direction: column;
-    min-height: 30px;
     cursor: text;
     color: #8b8b8b;
     font-size: 10px;
@@ -82,7 +81,7 @@
 
 .login__enter-button {
     width: 100%;
-    height: 46px;
+    padding: 14px 2px 14px 0;
     font-weight: 500;
     font-size: 14px;
     text-align: center;
@@ -92,8 +91,6 @@
     background-color: #4285f4;
     cursor: pointer;
     margin-bottom: 16px;
-    padding-right: 2px;
-    padding-bottom: 1px;
 }
 
 .login__enter-button:hover {

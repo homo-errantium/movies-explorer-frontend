@@ -70,7 +70,7 @@ function Register() {
                 </button>
                 <p className='register__reg-description'>
                     Уже зарегистрированы?{' '}
-                    <Link className='register__reg-link ' to='/signup'>
+                    <Link className='register__reg-link ' to='/signin'>
                         Войти
                     </Link>
                 </p>

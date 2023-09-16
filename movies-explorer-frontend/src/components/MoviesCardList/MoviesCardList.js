@@ -19,7 +19,7 @@ function MoviesCardList() {
                 className={
                     true
                         ? 'movies-card-list__more-button'
-                        : 'movies-card-list__more-button movies-card-list__more-button_type-invisible'
+                        : 'movies-card-list__more-button movies-card-list__more-button_invisible'
                 }
             >
                 Ещё

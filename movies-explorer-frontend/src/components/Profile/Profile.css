@@ -37,7 +37,7 @@
     font-weight: 500;
     font-size: 11px;
     line-height: 13px;
-    min-height: 30px;
+    padding-bottom: 17px;
     cursor: text;
     position: relative;
     padding-right: 2px;
@@ -87,7 +87,6 @@
 }
 
 .profile__save-button {
-    min-height: 16px;
     font-weight: 400;
     font-size: 13px;
     text-align: center;
@@ -99,7 +98,6 @@
 }
 
 .profile__logout-button {
-    min-height: 16px;
     font-weight: 500;
     font-size: 13px;
     text-align: center;
@@ -138,7 +136,10 @@
 }
 @media (max-width: 448px) {
     .profile {
-        padding: 232px 5% 260px;
+        padding: 232px 10% 260px;
+    }
+    .profile__input {
+        width: 100%;
     }
 }
 

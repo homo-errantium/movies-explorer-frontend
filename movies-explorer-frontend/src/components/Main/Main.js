@@ -6,10 +6,10 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-function Main() {
+function Main(props) {
     return (
         <>
-            <Header />
+            <Header isMain={true} loggedIn={props.loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />

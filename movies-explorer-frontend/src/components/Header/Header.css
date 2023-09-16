@@ -6,11 +6,11 @@
     align-items: center;
     width: 100%;
     padding: 18px 70px;
-    height: 74px;
+
     position: relative;
 }
 
-.header_type_black {
+.header_black {
     background-color: #202020;
 }
 
@@ -27,14 +27,12 @@
 @media (max-width: 768px) {
     .header {
         padding: 18px 30px;
-        min-height: 36px;
     }
 }
 
 @media (max-width: 320px) {
     .header {
-        padding: 18px 14px;
-        min-height: 36px;
+        padding: 14px 14px;
     }
     .header__logo {
         margin-right: 122px;

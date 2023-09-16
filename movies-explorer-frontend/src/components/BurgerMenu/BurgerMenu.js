@@ -1,25 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './BurgerMenu.css';
 import account from '../../images/account.svg';
 
-function BurgerMenu() {
+function BurgerMenu(props) {
+    const handleClose = props.handleClose;
     return (
         <div className='burger-menu'>
+            <div
+                className='burger-menu__container-empty'
+                onClick={handleClose}
+            ></div>
             <div className='burger-menu__container'>
-                <button className='burger-menu__close-button'></button>
+                <button
+                    className='burger-menu__close-button'
+                    onClick={handleClose}
+                ></button>
                 <nav className='burger-menu__links'>
-                    <Link to='/' className='burger-menu__link'>
+                    <NavLink to='/' className='burger-menu__link'>
                         Главная
-                    </Link>
-                    <Link to='/movies' className='burger-menu__link'>
+                    </NavLink>
+                    <NavLink to='/movies' className='burger-menu__link'>
                         Фильмы
-                    </Link>
-                    <Link to='/saved-movies' className='burger-menu__link'>
+                    </NavLink>
+                    <NavLink to='/saved-movies' className='burger-menu__link'>
                         Сохранённые фильмы
-                    </Link>
+                    </NavLink>
                 </nav>
-                <Link
+                <NavLink
                     to='/profile'
                     className='burger-menu__link burger-menu__account-container'
                 >
@@ -31,7 +39,7 @@ function BurgerMenu() {
                             alt='Логотип аккаунта'
                         />
                     </div>
-                </Link>
+                </NavLink>
             </div>
         </div>
     );

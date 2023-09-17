@@ -1,9 +1,17 @@
 body {
+    /* box-sizing: border-box;
+    height: 100%;
+    padding: 0;
+    margin: 0; */
     background: #202020;
     color: #ffffff;
 }
 
 .page {
+    /* box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column; */
     max-width: 1280px;
     margin: 0 auto;
     min-width: 320px;

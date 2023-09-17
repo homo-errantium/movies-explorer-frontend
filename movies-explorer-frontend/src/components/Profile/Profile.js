@@ -1,12 +1,13 @@
 import './Profile.css';
 import Header from '../Header/Header';
+import { NavLink } from 'react-router-dom';
 
 function Profile(props) {
     return (
         <>
             <Header />
-            <section className='profile' id='profile'>
-                <h2 className='profile__title'>Привет, {'Виталий'}!</h2>
+            <main className='profile' id='profile' role='main'>
+                <h1 className='profile__title'>Привет, {'Виталий'}!</h1>
                 <form className='profile__form'>
                     <fieldset className='profile__fieldset'>
                         <label
@@ -51,15 +52,11 @@ function Profile(props) {
                     >
                         Редактировать
                     </button>
-                    <button
-                        className='profile__logout-button'
-                        type='button'
-                        onClick={props.signOut}
-                    >
+                    <NavLink className='profile__logout-link' to='/'>
                         Выйти из аккаунта
-                    </button>
+                    </NavLink>
                 </form>
-            </section>
+            </main>
         </>
     );
 }

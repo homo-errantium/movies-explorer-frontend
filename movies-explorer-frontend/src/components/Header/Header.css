@@ -1,4 +1,6 @@
 .header {
+    /* flex-grow: 0;
+    flex-shrink: 0; */
     box-sizing: border-box;
     background: #073042;
     display: flex;
@@ -32,7 +34,7 @@
 
 @media (max-width: 320px) {
     .header {
-        padding: 14px 14px;
+        padding: 18px 14px;
     }
     .header__logo {
         margin-right: 122px;

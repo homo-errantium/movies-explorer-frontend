@@ -99,13 +99,17 @@
 
 @media (max-width: 320px) {
     .about-project {
-        padding: 71px 18px;
+        padding: 61px 18px;
     }
     .about-project__title {
         font-size: 18px;
         font-weight: 400;
         letter-spacing: -0.72px;
-        margin: 0 0 60px 0;
+        margin: 0 0 65px 0;
+        padding-top: 10px;
+    }
+    .about-project__title:after {
+        bottom: -4px;
     }
 
     .about-project__main-info-title {
@@ -116,7 +120,7 @@
     .about-project__main-info {
         flex-direction: column;
         gap: 56px;
-        margin-bottom: 60px;
+        margin-bottom: 61px;
     }
     .about-project__main-info-item {
         gap: 16px;
@@ -134,6 +138,7 @@
 
     .about-project__time-info-title {
         font-size: 11px;
+        line-height: 3;
     }
 
     .about-project__time-info-description {

@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 
 function Login() {
     return (
-        <section className='login' id='login'>
+        <main className='login' id='login' role='main'>
             <Link className='login__logo-link' to='/'>
                 <img
                     src={logo}
@@ -13,7 +13,7 @@ function Login() {
                     className='login__logo'
                 />
             </Link>
-            <h2 className='login__title'>Рады видеть!</h2>
+            <h1 className='login__title'>Рады видеть!</h1>
             <form className='login__form'>
                 <fieldset className='login__fieldset'>
                     <label htmlFor='login-label' className='login__label'>
@@ -58,7 +58,7 @@ function Login() {
                     </Link>
                 </p>
             </form>
-        </section>
+        </main>
     );
 }
 

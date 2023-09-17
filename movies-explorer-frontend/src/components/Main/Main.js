@@ -10,11 +10,13 @@ function Main(props) {
     return (
         <>
             <Header isMain={true} loggedIn={props.loggedIn} />
-            <Promo />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Portfolio />
+            <main className='main' role='main'>
+                <Promo />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
             <Footer />
         </>
     );

@@ -1,4 +1,6 @@
 .footer {
+    /* flex-grow: 0;
+    flex-shrink: 0; */
     padding: 60px 70px 20px;
 }
 
@@ -31,7 +33,6 @@
     color: #fff;
     font-size: 13px;
     font-weight: 400;
-    margin-right: 20px;
 }
 
 .footer__link:hover {
@@ -39,13 +40,18 @@
     cursor: pointer;
 }
 
-.footer__link:last-child {
+.footer__item:last-child {
     margin: 0;
 }
 
 .footer__links {
+    list-style: none;
     display: flex;
     justify-content: space-between;
+}
+
+.footer__item {
+    margin-right: 20px;
 }
 
 @media (max-width: 768px) {

@@ -53,19 +53,12 @@ function Navigation(props) {
                     </Link>
                     {/* <TestBurgerMenu /> */}
                     <button
+                        type='button'
                         className='navigation__burger-button'
                         onClick={handleOpen}
                     >
                         <span className='navigation__burger-button-element'></span>
                     </button>
-                    {/* <button
-                        className='navigation__burger-button'
-                        onClick={handleOpen}
-                    >
-                        <span className='navigation__burger-button-element'></span>
-                        <span className='navigation__burger-button-element'></span>
-                        <span className='navigation__burger-button-element'></span>
-                    </button> */}
                     {isClicked ? <BurgerMenu handleClose={handleClose} /> : ''}
                 </>
             ) : (

@@ -19,7 +19,7 @@ function MoviesCard() {
             </a>
 
             <div className='movie-card__info'>
-                <p className='movie-card__title'>Название фильма</p>
+                <h2 className='movie-card__title'>Название фильма</h2>
 
                 {true ? (
                     <button

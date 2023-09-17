@@ -17,7 +17,7 @@
 .login__form {
     display: flex;
     flex-direction: column;
-    max-width: 396px;
+    /* max-width: 396px; */
     border: none;
     outline: none;
 }

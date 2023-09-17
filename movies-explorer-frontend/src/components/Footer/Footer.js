@@ -9,24 +9,28 @@ function Footer() {
             </h3>
             <div className='footer__info'>
                 <span className='footer__year'>&copy; 2023</span>
-                <div className='footer__links'>
-                    <a
-                        className='footer__link'
-                        href='https://practicum.yandex.ru/'
-                        target='_blank'
-                        rel='noreferrer'
-                    >
-                        Яндекс.Практикум
-                    </a>
-                    <a
-                        className='footer__link'
-                        href='https://github.com/homo-errantium'
-                        target='_blank'
-                        rel='noreferrer'
-                    >
-                        Github
-                    </a>
-                </div>
+                <ul className='footer__links'>
+                    <li className='footer__item'>
+                        <a
+                            className='footer__link'
+                            href='https://practicum.yandex.ru/'
+                            target='_blank'
+                            rel='noreferrer'
+                        >
+                            Яндекс.Практикум
+                        </a>
+                    </li>
+                    <li className='footer__item'>
+                        <a
+                            className='footer__link'
+                            href='https://github.com/homo-errantium'
+                            target='_blank'
+                            rel='noreferrer'
+                        >
+                            Github
+                        </a>
+                    </li>
+                </ul>
             </div>
         </footer>
     );

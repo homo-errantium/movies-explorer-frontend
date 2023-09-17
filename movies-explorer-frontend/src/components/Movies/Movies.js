@@ -6,12 +6,14 @@ import Footer from '../Footer/Footer';
 
 function Movies(props) {
     return (
-        <section className='movies' id='movies  '>
+        <>
             <Header loggedIn={props.loggedIn} />
             <SearchForm />
-            <MoviesCardList />
+            <main className='movies' id='movies' role='main'>
+                <MoviesCardList />
+            </main>
             <Footer />
-        </section>
+        </>
     );
 }
 

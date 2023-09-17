@@ -120,12 +120,13 @@
 @media (max-width: 320px) {
     .techs {
         background: #202020;
-        padding: 67px 18px;
+        padding: 77px 18px;
     }
     .techs__title {
         font-size: 18px;
         letter-spacing: -0.72px;
         margin-bottom: 49px;
+        padding-bottom: 28px;
     }
     .techs__subtitle {
         font-size: 30px;

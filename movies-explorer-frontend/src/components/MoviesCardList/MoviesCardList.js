@@ -16,6 +16,7 @@ function MoviesCardList() {
                 <MoviesCard />
             </ul>
             <button
+                type='button'
                 className={
                     true
                         ? 'movies-card-list__more-button'

@@ -125,7 +125,7 @@
 
 @media (max-width: 320px) {
     .about-me {
-        padding: 74px 14px 0;
+        padding: 64px 14px 0;
     }
 
     .about-me__description {
@@ -134,7 +134,8 @@
     .about-me__title {
         font-size: 18px;
         letter-spacing: -0.72px;
-        margin: 0 0 88px 0;
+        margin: 0 0 59px 0;
+        padding-bottom: 30px;
     }
     .about-me__info {
         flex-direction: column-reverse;

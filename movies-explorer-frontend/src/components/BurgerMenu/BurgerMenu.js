@@ -14,6 +14,7 @@ function BurgerMenu(props) {
             <div className='burger-menu__container'>
                 <button
                     className='burger-menu__close-button'
+                    type='button'
                     onClick={handleClose}
                 ></button>
                 <nav className='burger-menu__links'>

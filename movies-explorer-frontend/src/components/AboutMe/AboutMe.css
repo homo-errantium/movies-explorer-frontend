@@ -130,6 +130,20 @@
         align-items: center;
         gap: 38px;
     }
+    .about-me__description {
+        text-align: justify;
+        max-width: 280px;
+    }
+    .about-me__student-name {
+        font-size: 28px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .about-me__student-specialization {
+        text-align: center;
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 600px) {

@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 
 function Register() {
     return (
-        <main className='register' id='register' role='main'>
+        <main className='register' id='register'>
             <Link className='register__logo-link' to='/'>
                 <img
                     src={logo}
@@ -16,13 +16,16 @@ function Register() {
             <h1 className='register__title'>Добро пожаловать!</h1>
             <form className='register__form'>
                 <fieldset className='register__fieldset'>
-                    <label htmlFor='register-label' className='register__label'>
+                    <label
+                        htmlFor='register-name-input'
+                        className='register__label'
+                    >
                         Имя
                         <input
                             className='register__input'
                             type='text'
                             name='email'
-                            id='register__name-input'
+                            id='register-name-input'
                             minLength='1'
                             maxLength='30'
                             // value={true ? 'pochta@yandex.ru' : ''}
@@ -33,13 +36,16 @@ function Register() {
                             {'Ошибка'}
                         </span>
                     </label>
-                    <label htmlFor='register-label' className='register__label'>
+                    <label
+                        htmlFor='register-email-input'
+                        className='register__label'
+                    >
                         E-mail
                         <input
                             className='register__input'
                             type='email'
                             name='email'
-                            id='register__email-input'
+                            id='register-email-input'
                             // value={true ? 'pochta@yandex.ru' : ''}
                             required
                             placeholder='E-mail'
@@ -48,13 +54,16 @@ function Register() {
                             {'Ошибка'}
                         </span>
                     </label>
-                    <label htmlFor='register-label' className='register__label'>
+                    <label
+                        htmlFor='register-password-input'
+                        className='register__label'
+                    >
                         Пароль
                         <input
                             className='register__input register__input_password'
                             type='password'
                             name='password'
-                            id='register__password-input'
+                            id='register-password-input'
                             // value={true ? '12345678' : ''}
                             required
                             minLength='8'

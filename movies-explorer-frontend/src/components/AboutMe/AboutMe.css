@@ -28,6 +28,7 @@
 
 .about-me__description {
     max-width: 600px;
+    text-align: left;
 }
 
 .about-me__student-name {
@@ -131,12 +132,29 @@
     }
 }
 
+@media (max-width: 600px) {
+    .about-me__student-name {
+        font-size: 28px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .about-me__description {
+        text-align: justify;
+        max-width: 280px;
+    }
+    .about-me__student-specialization {
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 320px) {
     .about-me {
         padding: 64px 14px 0;
     }
 
     .about-me__description {
+        text-align-last: left;
         max-width: 292px;
     }
     .about-me__title {
@@ -162,6 +180,7 @@
     .about-me__student-specialization {
         font-size: 11px;
         line-height: 16px; /* 145.455% */
+        text-align: left;
     }
     .about-me__student-info {
         font-size: 11px;

@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 
 function Login() {
     return (
-        <main className='login' id='login' role='main'>
+        <main className='login' id='login'>
             <Link className='login__logo-link' to='/'>
                 <img
                     src={logo}
@@ -16,28 +16,31 @@ function Login() {
             <h1 className='login__title'>Рады видеть!</h1>
             <form className='login__form'>
                 <fieldset className='login__fieldset'>
-                    <label htmlFor='login-label' className='login__label'>
+                    <label htmlFor='login-email-input' className='login__label'>
                         E-mail
                         <input
                             placeholder='E-mail'
                             className='login__input'
                             type='email'
                             name='email'
-                            id='login__email-input'
+                            id='login-email-input'
                             // value={true ? 'pochta@yandex.ru' : ''}
                             required
                         />
                         <span className='login__input-error'>{'Ошибка'}</span>
                     </label>
 
-                    <label htmlFor='login-label' className='login__label'>
+                    <label
+                        htmlFor='login-password-input'
+                        className='login__label'
+                    >
                         Пароль
                         <input
                             placeholder='Пароль'
                             className='login__input'
                             type='password'
                             name='password'
-                            id='login__password-input'
+                            id='login-password-input'
                             // value={true ? '12345678' : ''}
                             required
                             minLength='8'

@@ -10,7 +10,7 @@ function Main(props) {
     return (
         <div className='wrapper'>
             <Header isMain={true} loggedIn={props.loggedIn} />
-            <main className='main' role='main'>
+            <main className='main'>
                 <Promo />
                 <AboutProject />
                 <Techs />

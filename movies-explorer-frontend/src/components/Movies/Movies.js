@@ -8,8 +8,8 @@ function Movies(props) {
     return (
         <div className='wrapper'>
             <Header loggedIn={props.loggedIn} />
-            <SearchForm />
-            <main className='movies main' id='movies' role='main'>
+            <main className='movies main' id='movies'>
+                <SearchForm />
                 <MoviesCardList />
             </main>
             <Footer />

@@ -142,7 +142,7 @@
     margin-left: 2px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1300px) {
     .register {
         padding: 232px 30% 232px;
     }
@@ -156,12 +156,12 @@
 
 @media (max-width: 754px) {
     .register {
-        padding: 232px 10% 232px;
+        padding: 232px 15% 232px;
     }
 }
 @media (max-width: 448px) {
     .register {
-        padding: 232px 5% 232px;
+        padding: 232px 15% 232px;
     }
 }
 

@@ -3,7 +3,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm() {
     return (
-        <secction className='searchForm' id='searchForm'>
+        <div className='searchForm' id='searchForm'>
             <form className='searchForm__form'>
                 <fieldset className='searchForm__field'>
                     <label
@@ -13,7 +13,7 @@ function SearchForm() {
                     <input
                         // ref={ref}
                         className='searchForm__input'
-                        id='searchForm__input'
+                        id='searchForm-input'
                         type='text'
                         name='search'
                         // value={'Фильм' || ''}
@@ -32,7 +32,7 @@ function SearchForm() {
                     </h3>
                 </div>
             </form>
-        </secction>
+        </div>
     );
 }
 

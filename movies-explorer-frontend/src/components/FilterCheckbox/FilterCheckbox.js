@@ -3,12 +3,16 @@ import './FilterCheckbox.css';
 
 function FilterCheckbox() {
     return (
-        <form className='search-form__toggle-form'>
+        <label
+            htmlFor='search-form-toggle-input'
+            className='search-form-toggle-label'
+        >
             <input
-                className='search-form__toggle-input'
+                id='search-form-toggle-input'
+                className='search-form-toggle-label__input'
                 type='checkbox'
             ></input>
-        </form>
+        </label>
     );
 }
 

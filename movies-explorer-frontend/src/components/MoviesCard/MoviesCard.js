@@ -13,7 +13,7 @@ function MoviesCard(props) {
             >
                 <img
                     className='movie-card__image'
-                    alt={props.movieName}
+                    alt={'здесь будет уникальный альт после соединение с бэк-ом'}
                     src={forExample}
                 />
             </a>

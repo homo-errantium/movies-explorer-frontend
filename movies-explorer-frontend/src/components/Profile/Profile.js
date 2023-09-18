@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 function Profile(props) {
     return (
-        <>
-            <Header />
-            <main className='profile' id='profile' role='main'>
+        <div className='wrapper'>
+            <Header loggedIn={props.loggedIn} />
+            <main className='profile main' id='profile' role='main'>
                 <h1 className='profile__title'>Привет, {'Виталий'}!</h1>
                 <form className='profile__form'>
                     <fieldset className='profile__fieldset'>
@@ -21,7 +21,10 @@ function Profile(props) {
                                 id='profile__name-input'
                                 type='text'
                                 required
-                                value={'Виталий'}
+                                // value={'Виталий'}
+                                placeholder='Имя'
+                                minLength={2}
+                                maxLength='30'
                             />
                             <span className='profile__input-error'>
                                 {'Ошибка'}
@@ -38,7 +41,8 @@ function Profile(props) {
                                 id='profile__email-input'
                                 type='email'
                                 required
-                                value={'pochta@yandex.ru'}
+                                // value={'pochta@yandex.ru'}
+                                placeholder='E-mail'
                             />
                             <span className='profile__input-error'>
                                 {'Ошибка'}
@@ -57,7 +61,7 @@ function Profile(props) {
                     </NavLink>
                 </form>
             </main>
-        </>
+        </div>
     );
 }
 

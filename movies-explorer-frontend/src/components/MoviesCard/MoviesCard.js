@@ -2,7 +2,7 @@ import React from 'react';
 import './MoviesCard.css';
 import forExample from '../../images/for_example.jpg'; //delete after connection to DB
 
-function MoviesCard() {
+function MoviesCard(props) {
     return (
         <li className='movie-card'>
             <a
@@ -13,7 +13,7 @@ function MoviesCard() {
             >
                 <img
                     className='movie-card__image'
-                    alt='постер к фильму'
+                    alt={props.movieName}
                     src={forExample}
                 />
             </a>

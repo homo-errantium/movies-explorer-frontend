@@ -4,16 +4,16 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies() {
+function SavedMovies(props) {
     return (
-        <>
-            <Header />
+        <div className='wrapper'>
+            <Header loggedIn={props.loggedIn} />
             <SearchForm />
             <main className='savedMovies' id='savedMovies' role='main'>
                 <MoviesCardList />
             </main>
             <Footer />
-        </>
+        </div>
     );
 }
 

@@ -18,6 +18,7 @@ function SearchForm() {
                         name='search'
                         // value={'Фильм' || ''}
                         placeholder='Фильм'
+                        required
                     />
                 </fieldset>
 

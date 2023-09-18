@@ -5,10 +5,16 @@
 }
 
 .login__logo-link {
-    margin-bottom: 36px;
+    margin-bottom: 20px;
+}
+.login__logo-link:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }
 
 .login__title {
+    margin: 0;
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 40px;
@@ -33,6 +39,7 @@
 }
 
 .login__label {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     display: flex;
     flex-direction: column;
     cursor: text;
@@ -54,10 +61,11 @@
 }
 
 .login__input {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #fff;
     width: 100%;
     border: none;
-    /* outline: none; */
+    outline: none;
     background-color: #202020;
     font-size: 14px;
     font-weight: 500;
@@ -67,7 +75,18 @@
     outline-color: grey;
 }
 
+.login__inputt::placeholder {
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    color: #8b8b8b;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    border: none;
+}
+
 .login__input-error {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     display: none;
     font-weight: 400;
     font-size: 10px;
@@ -80,6 +99,7 @@
 }
 
 .login__enter-button {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     width: 100%;
     padding: 14px 2px 14px 0;
     font-weight: 500;
@@ -98,6 +118,7 @@
 }
 
 .login__reg-description {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;
     text-align: center;
     font-size: 14px;
@@ -166,6 +187,6 @@
     }
     .login__enter-button {
         margin-bottom: 14px;
-        padding-bottom: 0;
+        padding-bottom: 17px;
     }
 }

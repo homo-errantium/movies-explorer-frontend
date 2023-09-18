@@ -23,8 +23,11 @@ function Register() {
                             type='text'
                             name='email'
                             id='register__name-input'
+                            minLength='1'
+                            maxLength='30'
                             // value={true ? 'pochta@yandex.ru' : ''}
                             required
+                            placeholder='Имя'
                         />
                         <span className='register__input-error'>
                             {'Ошибка'}
@@ -39,6 +42,7 @@ function Register() {
                             id='register__email-input'
                             // value={true ? 'pochta@yandex.ru' : ''}
                             required
+                            placeholder='E-mail'
                         />
                         <span className='register__input-error'>
                             {'Ошибка'}
@@ -47,14 +51,16 @@ function Register() {
                     <label htmlFor='register-label' className='register__label'>
                         Пароль
                         <input
-                            className='register__input'
+                            className='register__input register__input_password'
                             type='password'
                             name='password'
                             id='register__password-input'
                             // value={true ? '12345678' : ''}
                             required
                             minLength='8'
+                            maxLength='30'
                             disabled={false ? true : false}
+                            placeholder='Пароль'
                         />
                         <span className='register__input-error'>
                             {'Что-то пошло не так'}

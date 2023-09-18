@@ -4,10 +4,11 @@
     align-items: center;
     width: calc(100% - 440px * 2);
     margin: auto;
-    padding-top: 246px;
+    padding-top: 151px;
 }
 
 .not-found__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #fff;
     text-align: center;
     font-size: 140px;
@@ -16,6 +17,7 @@
 }
 
 .not-found__description {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     text-align: center;
     font-size: 16px;
     font-weight: 400;
@@ -23,6 +25,7 @@
 }
 
 .not-found__back-link {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #4285f4;
     text-align: center;
     font-size: 14px;
@@ -42,6 +45,9 @@
 }
 
 @media (max-width: 768px) {
+    .not-found {
+        padding-top: 313px;
+    }
     .not-found__title {
         font-size: 140px;
         margin-bottom: 4px;
@@ -65,6 +71,9 @@
 }
 
 @media (max-width: 320px) {
+    .not-found {
+        padding-top: 276px;
+    }
     .not-found__title {
         font-size: 80px;
         margin-bottom: 10px;

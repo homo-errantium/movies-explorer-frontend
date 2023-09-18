@@ -8,7 +8,7 @@ import Header from '../Header/Header';
 
 function Main(props) {
     return (
-        <>
+        <div className='wrapper'>
             <Header isMain={true} loggedIn={props.loggedIn} />
             <main className='main' role='main'>
                 <Promo />
@@ -18,7 +18,7 @@ function Main(props) {
                 <Portfolio />
             </main>
             <Footer />
-        </>
+        </div>
     );
 }
 

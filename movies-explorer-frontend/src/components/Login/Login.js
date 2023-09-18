@@ -19,6 +19,7 @@ function Login() {
                     <label htmlFor='login-label' className='login__label'>
                         E-mail
                         <input
+                            placeholder='E-mail'
                             className='login__input'
                             type='email'
                             name='email'
@@ -32,6 +33,7 @@ function Login() {
                     <label htmlFor='login-label' className='login__label'>
                         Пароль
                         <input
+                            placeholder='Пароль'
                             className='login__input'
                             type='password'
                             name='password'
@@ -39,6 +41,7 @@ function Login() {
                             // value={true ? '12345678' : ''}
                             required
                             minLength='8'
+                            maxLength='30'
                             disabled={false ? true : false}
                         />
                         <span className='login__input-error'>{'Ошибка'}</span>

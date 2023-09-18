@@ -31,12 +31,14 @@
 }
 
 .movie-card__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 13px;
     font-weight: 500;
     line-height: 22px;
 }
 
 .movie-card__duration {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;
     font-size: 11px;
     font-weight: 400;

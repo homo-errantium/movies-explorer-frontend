@@ -6,14 +6,14 @@ import Footer from '../Footer/Footer';
 
 function Movies(props) {
     return (
-        <>
+        <div className='wrapper'>
             <Header loggedIn={props.loggedIn} />
             <SearchForm />
-            <main className='movies' id='movies' role='main'>
+            <main className='movies main' id='movies' role='main'>
                 <MoviesCardList />
             </main>
             <Footer />
-        </>
+        </div>
     );
 }
 

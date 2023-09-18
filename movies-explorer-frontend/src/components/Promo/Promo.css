@@ -7,6 +7,7 @@
 }
 
 .promo__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 40px;
     font-weight: 400;
     line-height: 52px;

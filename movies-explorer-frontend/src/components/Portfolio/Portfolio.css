@@ -1,8 +1,9 @@
 .portfolio {
-    padding: 99px 70px 125px;
+    padding: 101px 70px 125px;
 }
 
 .portfolio__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;
     font-size: 18px;
     font-style: normal;
@@ -36,6 +37,7 @@
 }
 
 .portfolio__text {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 30px;
     font-style: normal;
     font-weight: 400;

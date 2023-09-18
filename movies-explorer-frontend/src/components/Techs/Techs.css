@@ -4,6 +4,7 @@
 }
 
 .techs__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -15,6 +16,7 @@
 }
 
 .techs__subtitle {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     text-align: center;
     font-size: 50px;
     font-weight: 400;
@@ -24,6 +26,7 @@
 }
 
 .techs__description {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     text-align: center;
     font-size: 14px;
     font-weight: 400;
@@ -42,6 +45,7 @@
 }
 
 .techs__list-item {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     display: flex;
     justify-content: center;
     align-items: center;

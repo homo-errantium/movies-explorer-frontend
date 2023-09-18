@@ -3,6 +3,7 @@
 }
 
 .about-project__title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -0.88px;
@@ -34,11 +35,13 @@
 }
 
 .about-project__main-info-title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 20px;
     font-weight: 400;
     letter-spacing: -0.8px;
 }
 .about-project__main-info-description {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -51,6 +54,7 @@
 }
 
 .about-project__time-info-title {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     line-height: 2.6;
     font-size: 14px;
     font-weight: 400;
@@ -61,6 +65,7 @@
 }
 
 .about-project__time-info-description {
+    font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;
     text-align: center;
     font-family: Inter;
@@ -91,6 +96,7 @@
     }
     .about-project__main-info {
         margin-bottom: 93px;
+        gap: 38px;
     }
     .about-project__time-info {
         grid-template-columns: 140px 4fr;
@@ -120,7 +126,7 @@
     .about-project__main-info {
         flex-direction: column;
         gap: 56px;
-        margin-bottom: 61px;
+        margin-bottom: 59px;
     }
     .about-project__main-info-item {
         gap: 16px;
@@ -139,6 +145,7 @@
     .about-project__time-info-title {
         font-size: 11px;
         line-height: 3;
+        height: 35px;
     }
 
     .about-project__time-info-description {

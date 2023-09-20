@@ -1,0 +1,204 @@
+.about-me {
+    padding: 110px 70px 0;
+}
+
+.about-me__title {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.88px;
+    position: relative;
+    padding-bottom: 25px;
+    margin-bottom: 65px;
+}
+.about-me__title:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 0;
+    bottom: 1px;
+    border-bottom: 1px solid #dadada;
+}
+
+.about-me__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-me__description {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-me__student-name {
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.about-me__student-specialization {
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 26px;
+}
+
+.about-me__student-info {
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 95px;
+}
+
+.about-me__student-link {
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.about-me__student-link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.about-me__profile-photo {
+    width: 270px;
+    height: 327px;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .about-me {
+        padding: 90px 50px 0;
+    }
+    .about-me__title {
+        padding-bottom: 26px;
+    }
+
+    .about-me__student-name {
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 40px; /* 100% */
+        letter-spacing: -1.6px;
+        margin-bottom: 16px;
+    }
+
+    .about-me__student-specialization {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px; /* 111.111% */
+        margin-bottom: 20px;
+    }
+
+    .about-me__student-info {
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 102px;
+    }
+
+    .about-me__profile-photo {
+        width: 255px;
+        height: 307px;
+    }
+
+    .about-me__description {
+        max-width: 364px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-me__description {
+        max-width: 52%;
+    }
+}
+
+@media (max-width: 680px) {
+    .about-me__info {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 38px;
+    }
+    .about-me__description {
+        text-align: justify;
+        max-width: 280px;
+    }
+    .about-me__student-name {
+        font-size: 28px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .about-me__student-specialization {
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-me__student-name {
+        font-size: 28px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .about-me__description {
+        text-align: justify;
+        max-width: 280px;
+    }
+    .about-me__student-specialization {
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 320px) {
+    .about-me {
+        padding: 64px 14px 0;
+    }
+
+    .about-me__description {
+        text-align-last: left;
+        max-width: 292px;
+    }
+    .about-me__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        margin: 0 0 59px 0;
+        padding-bottom: 30px;
+    }
+    .about-me__info {
+        flex-direction: column-reverse;
+        gap: 38px;
+    }
+
+    .about-me__profile-photo {
+        width: 292px;
+        height: 352px;
+    }
+    .about-me__student-name {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin-bottom: 18px;
+    }
+    .about-me__student-specialization {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+        text-align: left;
+    }
+    .about-me__student-info {
+        font-size: 11px;
+        line-height: 16px; /* 145.455% */
+        margin-bottom: 54px;
+    }
+}

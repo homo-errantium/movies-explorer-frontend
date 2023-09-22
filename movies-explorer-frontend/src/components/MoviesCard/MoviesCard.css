@@ -45,6 +45,7 @@
 }
 
 .movie-card__delete-button {
+    visibility: hidden;
     background: url('../../images/movieCard-delete-button.svg') center no-repeat;
     border: none;
     outline: none;
@@ -52,6 +53,12 @@
     height: 24px;
     width: 24px;
     background-color: #313131;
+}
+
+.movie-card__delete-button_visible {
+    visibility: visible;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .movie-card__save-button {

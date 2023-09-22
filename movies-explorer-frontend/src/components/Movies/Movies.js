@@ -7,10 +7,26 @@ import Footer from '../Footer/Footer';
 function Movies(props) {
     return (
         <div className='wrapper'>
-            <Header loggedIn={props.loggedIn} />
+            <Header loggedIn={props.loggedIn} isMain={false} />
             <main className='movies main' id='movies'>
-                <SearchForm />
-                <MoviesCardList />
+                <SearchForm
+                    onSearchMovies={props.onSearchMovies}
+                    onShortMoviesCheck={props.onShortMoviesCheck}
+                    saved={false}
+                    isChecked={props.isShortMoviesChecked}
+                />
+                <MoviesCardList
+                    movies={props.movies}
+                    isSearching={props.isSearching}
+                    notFound={props.notFound}
+                    isErrorActive={props.isErrorActive}
+                    onMovieSave={props.onMovieSave}
+                    onDeleteMovie={props.onDeleteMovie}
+                    saved={false}
+                    savedMovies={props.savedMovies}
+                    isMobile={props.isMobile}
+                    isTablet={props.isTablet}
+                />
             </main>
             <Footer />
         </div>

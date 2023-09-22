@@ -67,15 +67,11 @@
     color: #fff;
     width: 100%;
     border: none;
-    /* outline: none; */
+    outline: none;
     background-color: #202020;
     font-size: 14px;
     font-weight: 500;
     padding: 6px 0 9px;
-}
-
-.register__input_password {
-    letter-spacing: 0.24em;
 }
 
 .register__input::placeholder {
@@ -88,7 +84,7 @@
 }
 
 .register__input:focus {
-    outline-color: grey;
+    border-bottom: 2px solid grey;
 }
 
 .register__input:invalid {

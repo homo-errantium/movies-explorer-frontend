@@ -6,6 +6,8 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import account from '../../images/account.svg';
 
 function Navigation(props) {
+    const [isMenuShown, setIsMenuShown] = React.useState(false);
+
     const [isClicked, setIsClicked] = useState(false);
 
     function handleOpen() {
@@ -51,7 +53,6 @@ function Navigation(props) {
                             />
                         </div>
                     </Link>
-                    {/* <TestBurgerMenu /> */}
                     <button
                         type='button'
                         className='navigation__burger-button'

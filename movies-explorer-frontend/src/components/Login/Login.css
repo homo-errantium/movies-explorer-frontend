@@ -116,6 +116,11 @@
     opacity: 0.8;
 }
 
+.login__enter-button_disabled {
+    background-color: red;
+    color: #fff;
+}
+
 .login__reg-description {
     font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;

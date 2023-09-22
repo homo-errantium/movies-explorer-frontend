@@ -5,7 +5,6 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 
 function Header(props) {
-    console.log(props.loggedIn);
     return (
         /*цвет шапки*/
         <header className={props.isMain ? 'header' : 'header header_black'}>

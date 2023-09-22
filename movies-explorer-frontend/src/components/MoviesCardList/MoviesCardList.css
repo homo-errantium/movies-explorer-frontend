@@ -37,6 +37,11 @@
 .movies-card-list__more-button_invisible {
     display: none;
 }
+
+.movies__no-display {
+    display: none;
+}
+
 @media (max-width: 1439px) {
     .movies-card-list {
         padding: 78px 5.5% 98px;

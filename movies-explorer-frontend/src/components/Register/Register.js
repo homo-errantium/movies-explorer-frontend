@@ -2,8 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
+import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
+import { useForm } from '../hooks/useForm';
 
-function Register() {
+function Register(props) {
+    const { values, handleChange, errors, isFormValid } = useForm();
+
+    function handleRegister(e) {
+        e.preventDefault();
+        props.onRegister(values.name, values.password, values.email);
+        props.onClear();
+    }
+
     return (
         <main className='register' id='register'>
             <Link className='register__logo-link' to='/'>
@@ -14,7 +24,7 @@ function Register() {
                 />
             </Link>
             <h1 className='register__title'>Добро пожаловать!</h1>
-            <form className='register__form'>
+            <form className='register__form' onSubmit={handleRegister}>
                 <fieldset className='register__fieldset'>
                     <label
                         htmlFor='register-name-input'
@@ -24,16 +34,19 @@ function Register() {
                         <input
                             className='register__input'
                             type='text'
-                            name='email'
+                            name='name'
                             id='register-name-input'
-                            minLength='1'
-                            maxLength='30'
-                            // value={true ? 'pochta@yandex.ru' : ''}
+                          minLength="2"
+          maxLength="40"
+                            value={values.name || ''}
+                            onChange={handleChange}
                             required
                             placeholder='Имя'
+                            // pattern={USER_NAME_REGEX}
+                            disabled={props.isSaving}
                         />
                         <span className='register__input-error'>
-                            {'Ошибка'}
+                            {errors.name}
                         </span>
                     </label>
                     <label
@@ -46,12 +59,15 @@ function Register() {
                             type='email'
                             name='email'
                             id='register-email-input'
-                            // value={true ? 'pochta@yandex.ru' : ''}
+                            value={values.email || ''}
+                            onChange={handleChange}
+                            // pattern={EMAIL_REGEX}
                             required
                             placeholder='E-mail'
+                            disabled={props.isSaving}
                         />
                         <span className='register__input-error'>
-                            {'Ошибка'}
+                            {errors.email}
                         </span>
                     </label>
                     <label
@@ -64,28 +80,33 @@ function Register() {
                             type='password'
                             name='password'
                             id='register-password-input'
-                            // value={true ? '12345678' : ''}
+                            value={values.password || ''}
+                            onChange={handleChange}
                             required
                             minLength='8'
                             maxLength='30'
-                            disabled={false ? true : false}
+                            disabled={props.isSaving}
                             placeholder='Пароль'
                         />
                         <span className='register__input-error'>
-                            {'Что-то пошло не так'}
+                            {errors.password}
                         </span>
                     </label>
                 </fieldset>
                 <button
                     className='register__enter-button'
                     type='submit'
-                    disabled={true}
+                    disabled={!isFormValid}
                 >
                     Зарегистрироваться
                 </button>
                 <p className='register__reg-description'>
                     Уже зарегистрированы?{' '}
-                    <Link className='register__reg-link ' to='/signin'>
+                    <Link
+                        className='register__reg-link '
+                        to='/signin'
+                        onClick={props.onClear}
+                    >
                         Войти
                     </Link>
                 </p>

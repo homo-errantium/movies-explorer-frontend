@@ -2,8 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
+import { useForm } from '../hooks/useForm';
 
-function Login() {
+function Login(props) {
+    const { values, handleChange, errors, isFormValid } = useForm();
+
+    function handleLogin(e) {
+        e.preventDefault();
+
+        props.onLogin(values.password, values.email);
+
+        props.onClear();
+    }
+
     return (
         <main className='login' id='login'>
             <Link className='login__logo-link' to='/'>
@@ -14,7 +25,7 @@ function Login() {
                 />
             </Link>
             <h1 className='login__title'>Рады видеть!</h1>
-            <form className='login__form'>
+            <form className='login__form' onSubmit={handleLogin}>
                 <fieldset className='login__fieldset'>
                     <label htmlFor='login-email-input' className='login__label'>
                         E-mail
@@ -24,10 +35,14 @@ function Login() {
                             type='email'
                             name='email'
                             id='login-email-input'
-                            // value={true ? 'pochta@yandex.ru' : ''}
+                            value={values.email || ''}
+                            onChange={handleChange}
                             required
+                            disabled={props.isSaving}
                         />
-                        <span className='login__input-error'>{'Ошибка'}</span>
+                        <span className='login__input-error'>
+                            {errors.email}
+                        </span>
                     </label>
 
                     <label
@@ -41,25 +56,37 @@ function Login() {
                             type='password'
                             name='password'
                             id='login-password-input'
-                            // value={true ? '12345678' : ''}
+                            value={values.password || ''}
+                            onChange={handleChange}
                             required
                             minLength='8'
                             maxLength='30'
-                            disabled={false ? true : false}
+                            disabled={props.isSaving}
                         />
-                        <span className='login__input-error'>{'Ошибка'}</span>
+                        <span className='login__input-error'>
+                            {errors.password}
+                        </span>
                     </label>
                 </fieldset>
+                <span className='login__submit-error auth__submit-error'>
+                    {props.errorMessage}
+                </span>
                 <button
-                    className='login__enter-button'
+                    className={`login__enter-button ${
+                        isFormValid ? '' : 'login__enter-button_disabled'
+                    }`}
                     type='submit'
-                    disabled={true}
+                    disabled={!isFormValid}
                 >
                     Войти
                 </button>
                 <p className='login__reg-description'>
                     Ещё не зарегистрированы?{' '}
-                    <Link className='login__reg-link ' to='/signup'>
+                    <Link
+                        className='login__reg-link '
+                        to='/signup'
+                        onClick={props.onClear}
+                    >
                         Регистрация
                     </Link>
                 </p>

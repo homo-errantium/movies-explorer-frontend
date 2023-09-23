@@ -1,45 +1,47 @@
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import './Profile.css';
 import Header from '../Header/Header';
 import { NavLink } from 'react-router-dom';
-import { useForm } from '../hooks/useForm';
+import useForm from '../hooks/useForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Profile(props) {
-    const { values, setValues, handleChange, errors, isFormValid } = useForm();
-    const [isFormDisabled, setIsFormDisabled] = React.useState(true);
+function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
+    const currentUser = useContext(CurrentUserContext);
 
-    const currentUser = React.useContext(CurrentUserContext);
+    const { enteredValues, errors, handleChange, isFormValid, resetForm } =
+        useForm();
+    const [isLastValues, setIsLastValues] = useState(false);
 
-    React.useEffect(() => {
-        setValues(currentUser);
-    }, [currentUser, setValues]);
-
-    function handleEditProfileClick(e) {
-        e.preventDefault();
-
-        setIsFormDisabled(false);
-    }
+    useEffect(() => {
+        if (currentUser) {
+            resetForm(currentUser);
+        }
+    }, [currentUser, resetForm]);
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        props.onChangeUser(values.name, values.email);
+        onUpdateUser({
+            name: enteredValues.name,
+            email: enteredValues.email,
+        });
     }
 
-    React.useEffect(() => {
-        setIsFormDisabled(props.isUpdateSuccess);
-    }, [props.isUpdateSuccess, props.onChangeUser]);
-
-    React.useEffect(() => {
-        if (props.isSaving) {
-            setIsFormDisabled(true);
+    useEffect(() => {
+        if (
+            currentUser.name === enteredValues.name &&
+            currentUser.email === enteredValues.email
+        ) {
+            setIsLastValues(true);
+        } else {
+            setIsLastValues(false);
         }
-    }, [props.isSaving]);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [enteredValues]);
     return (
         <div className='wrapper'>
-            <Header loggedIn={props.loggedIn} main={false} />
+            <Header loggedIn={loggedIn} main={false} />
             <main className='profile main' id='profile'>
                 <section className='profile__section'>
                     <h1 className='profile__title'>
@@ -58,13 +60,12 @@ function Profile(props) {
                                     id='profile-name-input'
                                     type='text'
                                     required
-                                    value={values.name || ''}
+                                    value={enteredValues.name || ''}
                                     onChange={handleChange}
                                     placeholder='Имя'
                                     pattern={USER_NAME_REGEX}
                                     minLength={2}
                                     maxLength='30'
-                                    disabled={isFormDisabled}
                                 />
                                 <span className='profile__input-error'>
                                     {errors.name}
@@ -81,27 +82,30 @@ function Profile(props) {
                                     id='profile-email-input'
                                     type='email'
                                     required
-                                    value={values.email || ''}
+                                    value={enteredValues.email || ''}
                                     onChange={handleChange}
                                     placeholder='E-mail'
                                     pattern={EMAIL_REGEX}
-                                    disabled={isFormDisabled}
                                 />
                                 <span className='profile__input-error'>
                                     {errors.email}
                                 </span>
                             </label>
                         </fieldset>
-                        <span
-                            className={`profile__form-message ${
-                                props.isUpdateSuccess
-                                    ? 'profile__form-message_type_success'
-                                    : 'profile__form-message_type_error'
-                            }`}
+
+                        <button
+                            type='submit'
+                            disabled={!isFormValid ? true : false}
+                            className={
+                                !isFormValid || isLoading || isLastValues
+                                    ? 'profile__button profile__button_type_save profile__button_type_save_disabled'
+                                    : 'profile__button profile__button_type_save'
+                            }
                         >
-                            {props.message}
-                        </span>
-                        {isFormDisabled ? (
+                            Редактировать
+                        </button>
+
+                        {/* {isFormDisabled ? (
                             <button
                                 className='profile__button profile__button_type_edit'
                                 type='submit'
@@ -121,12 +125,12 @@ function Profile(props) {
                             >
                                 Сохранить
                             </button>
-                        )}
+                        )} */}
 
                         <NavLink
                             className='profile__logout-link'
                             to='/'
-                            onClick={props.onSignOut}
+                            onClick={signOut}
                         >
                             Выйти из аккаунта
                         </NavLink>

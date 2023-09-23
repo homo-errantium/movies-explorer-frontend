@@ -1,55 +1,30 @@
-const BASE_URL = 'https://api.my.films.nomoredomainsicu.ru';
-// const BASE_URL = 'http://localhost:4000';
+import { checkResponse } from './utils';
 
-export function checkResponse(res) {
-    if (res.ok) {
-        return res.json();
-    } else {
-        return Promise.reject(`${res.status} ${res.statusText}`);
-    }
-}
+export const BASE_URL = 'https://api.my.films.nomoredomainsicu.ru';
 
-export function register(name, password, email) {
+export const register = (name, email, password) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        credentials: 'include',
-        body: JSON.stringify({
-            name: name,
-            password: password,
-            email: email,
-        }),
-    })
-        .then((res) => res.json())
-        .then((res) => console.log(res));
-}
+        body: JSON.stringify({ name, email, password }),
+    }).then((res) => checkResponse(res));
+};
 
-export function authorize(password, email) {
+export const authorize = (email, password) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        credentials: 'include',
-        body: JSON.stringify({
-            password: password,
-            email: email,
-        }),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-            }
-            return data;
-        });
-}
+        body: JSON.stringify({ email, password }),
+    }).then((res) => checkResponse(res));
+};
 
-export function getUserData(token) {
+export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
@@ -57,81 +32,81 @@ export function getUserData(token) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
-    })
-        .then((res) => res.json())
-        .then((data) => data);
-}
+    }).then((res) => checkResponse(res));
+};
 
-export function editUserData(token, name, email) {
+// метод делает запрос серверу и получает данные профиля
+export const getUserInfo = () => {
     return fetch(`${BASE_URL}/users/me`, {
-        method: 'PATCH',
+        method: 'GET',
         headers: {
-            Accept: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
-        body: JSON.stringify({
-            name: name,
-            email: email,
-        }),
-    })
-        .then((res) => checkResponse(res))
-        .then((data) => data);
-}
+    }).then((res) => checkResponse(res));
+};
 
-export function getSavedMovies(token) {
+// метод изменяет данные профиля на сервере
+export const setUserInfo = (data) => {
+    // console.log(data);
+    return fetch(`${BASE_URL}/users/me`, {
+        method: 'PATCH', //метод запроса
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json',
+        }, //заголовки запроса
+        body: JSON.stringify({
+            //тело запроса
+            name: data.name, //в name передаем значение name объекта, переданного в setUserInfo
+            email: data.email, //в about передаем значение about объекта, переданного в setUserInfo
+        }),
+    }).then((res) => checkResponse(res));
+};
+
+export const getCards = () => {
     return fetch(`${BASE_URL}/movies`, {
         method: 'GET',
         headers: {
-            Accept: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
-    })
-        .then((res) => checkResponse(res))
-        .then((data) => data);
-}
+    }).then((res) => checkResponse(res));
+};
 
-export function saveMovie(token, movie) {
+// метод добавления новой карточки на сервер
+export const postCard = (data) => {
+    // console.log(data);
     return fetch(`${BASE_URL}/movies`, {
         method: 'POST',
         headers: {
-            Accept: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
         body: JSON.stringify({
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: movie.image,
-            trailer: movie.trailer,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-            thumbnail: movie.thumbnail,
-            movieId: movie.movieId,
+            country: data.country,
+            director: data.director,
+            duration: data.duration,
+            year: data.year,
+            description: data.description,
+            image: 'https://api.nomoreparties.co' + data.image.url,
+            trailerLink: data.trailerLink,
+            thumbnail:
+                'https://api.nomoreparties.co' +
+                data.image.formats.thumbnail.url,
+            movieId: data.id,
+            nameRU: data.nameRU,
+            nameEN: data.nameEN,
         }),
-    })
-        .then((res) => checkResponse(res))
-        .then((data) => data);
-}
+    }).then((res) => checkResponse(res));
+};
 
-export function deleteMovie(token, movieId) {
-    return fetch(`${BASE_URL}/movies/${movieId}`, {
+// метод удаления карточки с сервера
+export const deleteCard = (cardId) => {
+    return fetch(`${BASE_URL}/movies/${cardId}`, {
         method: 'DELETE',
         headers: {
-            Accept: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
-    })
-        .then((res) => checkResponse(res))
-        .then((data) => data);
-}
+    }).then((res) => checkResponse(res));
+};

@@ -1,18 +1,11 @@
-export const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+import { checkResponse } from './utils';
 
-function checkResponse(res) {
-    if (res.ok) {
-        return res.json();
-    } else {
-        return Promise.reject(`${res.status} ${res.statusText}`);
-    }
-}
+export const BASE_URL = 'https://api.my.films.nomoredomainsicu.ru';
 
-export function getMovies() {
-    return fetch(`${BASE_URL}`, {
+export function getCards() {
+    return fetch(BASE_URL, {
         method: 'GET',
         headers: {
-            Accept: 'application/json',
             'Content-Type': 'application/json',
         },
     }).then((res) => checkResponse(res));

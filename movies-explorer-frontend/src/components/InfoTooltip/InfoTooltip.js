@@ -1,30 +1,60 @@
+// import React from 'react';
+// import './InfoTooltip.css';
+// import logoGood from '../../images/logoGood.svg';
+// import logoBad from '../../images/logoBad.svg';
+
+// function InfoTooltip({ onClose, isSuccess, isUpdate, isOpen, isRegistred }) {
+//     return (
+//         <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
+//             <div className='popup__container'>
+//                 <button
+//                     id='success-close-button'
+//                     type='button'
+//                     className='popup__close-button'
+//                     onClick={onClose}
+//                 />
+//                 <img
+//                     className='popup__signup-image'
+//                     src={logoBad}
+//                     alt='Что-то пошло не так'
+//                 />
+//                 <h2 className='popup__signup-title'>{`${
+//                     isUpdate
+//                         ? 'Редактирование прошло успешно!'
+//                         : 'Что-то пошло не так! Попробуйте ещё раз.'
+//                 }`}</h2>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default InfoTooltip;
+
+import React from 'react';
+import './InfoTooltip.css';
 import logoGood from '../../images/logoGood.svg';
-import logoBad from '../../images/logoGood';
+import logoBad from '../../images/logoBad.svg';
 
-function InfoTooltip({ isOpen, isRegistred, onClose }) {
-    const infoDescriptionGood = 'Вы успешно зарегистрировались!';
-    const infoDescriptionBad = 'Что-то пошло не так! Попробуйте ещё раз.';
-
+function InfoTooltip({ onClose, isSuccess, isUpdate }) {
     return (
-        <div className={`popup  ${isOpen ? `popup_opened` : ''} `}>
-            <div className='popup__container popup__container_info '>
-                <img
-                    className='popup__info-logo'
-                    src={isRegistred ? logoGood : logoBad}
-                    alt={
-                        isRegistred
-                            ? `Логотип успешной решистрации`
-                            : `Логотип ошибки регистрации`
-                    }
-                />
-                <span className='popup__title popup__title_info'>
-                    {isRegistred ? infoDescriptionGood : infoDescriptionBad}
-                </span>
+        <div className={`popup ${!isSuccess ? 'popup_opened' : ''}`}>
+            <div className='popup__container'>
                 <button
-                    className='popup__btn-close'
+                    id='success-close-button'
                     type='button'
+                    className='popup__close-button'
                     onClick={onClose}
-                ></button>
+                />
+                <img
+                    className='popup__signup-image'
+                    src={logoBad}
+                    alt='Что-то пошло не так'
+                />
+                <h2 className='popup__signup-title'>{`${
+                    isUpdate
+                        ? 'Редактирование прошло успешно!'
+                        : 'Что-то пошло не так! Попробуйте ещё раз.'
+                }`}</h2>
             </div>
         </div>
     );

@@ -93,7 +93,7 @@
 
 .register__input-error {
     font-family: 'Inter', 'Arial', 'sans-serif';
-    display: none;
+    display: block;
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
@@ -122,6 +122,15 @@
 .register__reg-link:hover {
     opacity: 0.8;
     cursor: pointer;
+}
+
+.register__enter-button_disabled {
+    background-color: grey;
+    color: #c2c2c2;
+}
+
+.register__enter-button_disabled:hover {
+    cursor: not-allowed;
 }
 
 .register__reg-description {

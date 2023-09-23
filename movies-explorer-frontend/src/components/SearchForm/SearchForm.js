@@ -1,56 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import { useLocation } from 'react-router-dom';
 
-function SearchForm(props) {
-    const [search, setSearch] = React.useState('');
-    const [isSearchValid, setIsSearchValid] = React.useState(true);
+function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
+    const [isQueryError, setIsQueryError] = useState(false);
+    const [query, setQuery] = useState('');
+    const location = useLocation();
 
-    function handleSearchChange(e) {
-        setSearch(e.target.value);
-        setIsSearchValid(e.target.checkValidity());
+    function handleChangeQuery(e) {
+        setQuery(e.target.value);
     }
 
-    function handleSearchSavedMovies(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        props.onSearchSavedMovies(search);
+        if (query.trim().length === 0) {
+            setIsQueryError(true);
+        } else {
+            setIsQueryError(false);
+            onSearchMovies(query);
+        }
     }
 
-    function handleSearchMovies(e) {
-        e.preventDefault();
-        props.onSearchMovies(search);
-    }
+    useEffect(() => {
+        if (
+            location.pathname === '/movies' &&
+            localStorage.getItem('movieSearch')
+        ) {
+            const localQuery = localStorage.getItem('movieSearch');
+            setQuery(localQuery);
+        }
+    }, [location]);
+
     return (
         <div className='searchForm' id='searchForm'>
-            <form
-                className='searchForm__form'
-                onSubmit={
-                    props.saved ? handleSearchSavedMovies : handleSearchMovies
-                }
-            >
+            <form className='searchForm__form' onSubmit={handleSubmit}>
                 <fieldset className='searchForm__field'>
                     <label
                         className='searchForm__label'
                         htmlFor='searchForm-input'
                     ></label>
                     <input
-                        // ref={ref}
                         className='searchForm__input'
                         id='searchForm-input'
                         type='text'
                         name='search'
-                        value={search || ''}
-                        onChange={handleSearchChange}
+                        value={query || ''}
+                        onChange={handleChangeQuery}
                         placeholder='Фильм'
                         required
                     />
-                    <span
+                    {/* <span
                         className={`searchForm__error ${
                             isSearchValid ? 'searchForm__error_hidden' : ''
                         }`}
                     >
                         Нужно ввести ключевое слово
-                    </span>
+                    </span> */}
                 </fieldset>
 
                 <button className='searchForm__button' type='submit'>
@@ -58,9 +64,14 @@ function SearchForm(props) {
                 </button>
                 <div className='searchForm__toggle-box'>
                     <FilterCheckbox
-                        onChange={props.onShortMoviesCheck}
-                        isChecked={props.isChecked}
+                        onFilter={onFilter}
+                        isShortMovies={isShortMovies}
                     />
+                    {isQueryError && (
+                        <span className='searchForm__error'>
+                            Нужно ввести ключевое слово
+                        </span>
+                    )}
                     <h3 className='searchForm__toggle-title'>
                         Короткометражки
                     </h3>

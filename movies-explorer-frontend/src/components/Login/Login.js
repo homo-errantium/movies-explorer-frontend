@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import { useForm } from '../hooks/useForm';
+import useForm from '../hooks/useForm';
+import { EMAIL_REGEX } from '../../utils/constants';
 
-function Login(props) {
-    const { values, handleChange, errors, isFormValid } = useForm();
+function Login({ onAuthorize, isLoading }) {
+    const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
-    function handleLogin(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-
-        props.onLogin(values.password, values.email);
-
-        props.onClear();
+        onAuthorize({
+            email: enteredValues.email,
+            password: enteredValues.password,
+        });
     }
 
     return (
@@ -25,7 +26,7 @@ function Login(props) {
                 />
             </Link>
             <h1 className='login__title'>Рады видеть!</h1>
-            <form className='login__form' onSubmit={handleLogin}>
+            <form className='login__form' onSubmit={handleSubmit} noValidate>
                 <fieldset className='login__fieldset'>
                     <label htmlFor='login-email-input' className='login__label'>
                         E-mail
@@ -35,10 +36,10 @@ function Login(props) {
                             type='email'
                             name='email'
                             id='login-email-input'
-                            value={values.email || ''}
+                            value={enteredValues.email || ''}
                             onChange={handleChange}
                             required
-                            disabled={props.isSaving}
+                            pattern={EMAIL_REGEX}
                         />
                         <span className='login__input-error'>
                             {errors.email}
@@ -56,37 +57,32 @@ function Login(props) {
                             type='password'
                             name='password'
                             id='login-password-input'
-                            value={values.password || ''}
+                            value={enteredValues.password || ''}
                             onChange={handleChange}
                             required
                             minLength='8'
                             maxLength='30'
-                            disabled={props.isSaving}
                         />
                         <span className='login__input-error'>
                             {errors.password}
                         </span>
                     </label>
                 </fieldset>
-                <span className='login__submit-error auth__submit-error'>
+                {/* <span className='login__submit-error auth__submit-error'>
                     {props.errorMessage}
-                </span>
+                </span> */}
                 <button
                     className={`login__enter-button ${
                         isFormValid ? '' : 'login__enter-button_disabled'
                     }`}
                     type='submit'
-                    disabled={!isFormValid}
+                    disabled={!isFormValid ? true : false}
                 >
                     Войти
                 </button>
                 <p className='login__reg-description'>
                     Ещё не зарегистрированы?{' '}
-                    <Link
-                        className='login__reg-link '
-                        to='/signup'
-                        onClick={props.onClear}
-                    >
+                    <Link className='login__reg-link ' to='/signup'>
                         Регистрация
                     </Link>
                 </p>

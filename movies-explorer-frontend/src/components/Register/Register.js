@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
-import { EMAIL_REGEX, USER_NAME_REGEX } from '../../utils/constants';
-import { useForm } from '../hooks/useForm';
+import useForm from '../hooks/useForm';
 
-function Register(props) {
-    const { values, handleChange, errors, isFormValid } = useForm();
+function Register({ onRegister, isLoading }) {
+    const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
-    function handleRegister(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        props.onRegister(values.name, values.password, values.email);
-        props.onClear();
+        onRegister({
+            name: enteredValues.name,
+            email: enteredValues.email,
+            password: enteredValues.password,
+        });
     }
 
     return (
@@ -24,7 +26,7 @@ function Register(props) {
                 />
             </Link>
             <h1 className='register__title'>Добро пожаловать!</h1>
-            <form className='register__form' onSubmit={handleRegister}>
+            <form className='register__form' onSubmit={handleSubmit}>
                 <fieldset className='register__fieldset'>
                     <label
                         htmlFor='register-name-input'
@@ -36,14 +38,12 @@ function Register(props) {
                             type='text'
                             name='name'
                             id='register-name-input'
-                          minLength="2"
-          maxLength="40"
-                            value={values.name || ''}
+                            minLength='2'
+                            maxLength='40'
+                            value={enteredValues.name || ''}
                             onChange={handleChange}
                             required
                             placeholder='Имя'
-                            // pattern={USER_NAME_REGEX}
-                            disabled={props.isSaving}
                         />
                         <span className='register__input-error'>
                             {errors.name}
@@ -59,12 +59,10 @@ function Register(props) {
                             type='email'
                             name='email'
                             id='register-email-input'
-                            value={values.email || ''}
+                            value={enteredValues.email || ''}
                             onChange={handleChange}
-                            // pattern={EMAIL_REGEX}
                             required
                             placeholder='E-mail'
-                            disabled={props.isSaving}
                         />
                         <span className='register__input-error'>
                             {errors.email}
@@ -80,12 +78,11 @@ function Register(props) {
                             type='password'
                             name='password'
                             id='register-password-input'
-                            value={values.password || ''}
+                            value={enteredValues.password || ''}
                             onChange={handleChange}
                             required
                             minLength='8'
                             maxLength='30'
-                            disabled={props.isSaving}
                             placeholder='Пароль'
                         />
                         <span className='register__input-error'>
@@ -94,7 +91,9 @@ function Register(props) {
                     </label>
                 </fieldset>
                 <button
-                    className='register__enter-button'
+                    className={`register__enter-button ${
+                        isFormValid ? '' : 'register__enter-button_disabled'
+                    }`}
                     type='submit'
                     disabled={!isFormValid}
                 >
@@ -102,11 +101,7 @@ function Register(props) {
                 </button>
                 <p className='register__reg-description'>
                     Уже зарегистрированы?{' '}
-                    <Link
-                        className='register__reg-link '
-                        to='/signin'
-                        onClick={props.onClear}
-                    >
+                    <Link className='register__reg-link ' to='/signin'>
                         Войти
                     </Link>
                 </p>

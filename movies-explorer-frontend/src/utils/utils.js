@@ -30,10 +30,5 @@ export function filterDuration(movies) {
 export function durationConverter(duration) {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
-    return `${hours}ч${minutes}м`;
-    // if (hours > 0) {
-    //   return `${hours}ч${minutes}м`;
-    // } else {
-    //   return `${minutes}м`;
-    // }
+    return `${hours}ч ${minutes}м`;
 }

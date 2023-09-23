@@ -21,7 +21,7 @@ import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
-import * as moviesApi from '../../utils/MoviesApi';
+// import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
 
 function App() {
@@ -30,12 +30,13 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
-    const [isSuccess, setIsSuccess] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
     const path = location.pathname;
+    const [isSuccess, setIsSuccess] = useState(true);
 
-    const [isOpen, setIsInfoTooltipOpen] = useState(false);
+    const [isProfileForm, setIsProfileForm] = useState(false);
+    const [isRegForm, setIsRegForm] = useState(false);
     const [isRegistred, setIsRegistred] = useState(false);
 
     //Проверка токена и авторизация пользователя
@@ -50,7 +51,7 @@ function App() {
                         localStorage.removeItem('allMovies');
                         setIsLoggedIn(true);
                     }
-                    navigate.push(path);
+                    // navigate.push(path);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -87,9 +88,13 @@ function App() {
             .register(name, email, password)
             .then(() => {
                 handleAuthorize({ email, password });
+                setIsRegistred(true);
+                setIsRegForm(true);
             })
             .catch((err) => {
-                setIsSuccess(false);
+                setIsRegistred(false);
+                setIsRegForm(true);
+                // setIsSuccess(false);
                 console.log(err);
             });
     }
@@ -117,11 +122,13 @@ function App() {
             .then((data) => {
                 setIsUpdate(true);
                 setCurrentUser(data);
+                setIsProfileForm(true);
             })
             .catch((err) => {
-                setIsSuccess(false);
+                setIsUpdate(false);
                 console.log(err);
                 handleUnauthorized(err);
+                setIsProfileForm(true);
             });
     }
 
@@ -170,10 +177,17 @@ function App() {
         navigate.push('/');
     };
 
-    function closeUnsuccessPopup() {
+    function closePopup() {
+        setIsRegForm(false);
+        setIsProfileForm(false);
+        setIsRegistred(false);
         setIsSuccess(true);
-        setIsUpdate(false);
     }
+
+    // function closeUnsuccessPopup() {
+    //     setIsSuccess(true);
+    //     setIsUpdate(false);
+    // }
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -267,14 +281,16 @@ function App() {
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
-                <InfoTooltip
+                {/* <InfoTooltip
                     isSuccess={isSuccess}
                     onClose={closeUnsuccessPopup}
-                />
+                /> */}
                 <InfoTooltip
-                    isSuccess={!isUpdate}
+                    isProfileForm={isProfileForm}
+                    isRegistred={isRegistred}
+                    isRegForm={isRegForm}
                     isUpdate={isUpdate}
-                    onClose={closeUnsuccessPopup}
+                    onClose={closePopup}
                 />
             </div>
         </CurrentUserContext.Provider>

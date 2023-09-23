@@ -48,17 +48,15 @@ export const getUserInfo = () => {
 
 // метод изменяет данные профиля на сервере
 export const setUserInfo = (data) => {
-    // console.log(data);
     return fetch(`${BASE_URL}/users/me`, {
-        method: 'PATCH', //метод запроса
+        method: 'PATCH',
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json',
-        }, //заголовки запроса
+        },
         body: JSON.stringify({
-            //тело запроса
-            name: data.name, //в name передаем значение name объекта, переданного в setUserInfo
-            email: data.email, //в about передаем значение about объекта, переданного в setUserInfo
+            name: data.name,
+            email: data.email,
         }),
     }).then((res) => checkResponse(res));
 };

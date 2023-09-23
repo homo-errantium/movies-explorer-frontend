@@ -63,7 +63,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
                                     value={enteredValues.name || ''}
                                     onChange={handleChange}
                                     placeholder='Имя'
-                                    pattern={USER_NAME_REGEX}
+                                    // pattern={USER_NAME_REGEX}
                                     minLength={2}
                                     maxLength='30'
                                 />
@@ -85,7 +85,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
                                     value={enteredValues.email || ''}
                                     onChange={handleChange}
                                     placeholder='E-mail'
-                                    pattern={EMAIL_REGEX}
+                                    // pattern={EMAIL_REGEX}
                                 />
                                 <span className='profile__input-error'>
                                     {errors.email}

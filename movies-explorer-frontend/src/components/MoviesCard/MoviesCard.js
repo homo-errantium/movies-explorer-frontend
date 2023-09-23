@@ -24,12 +24,6 @@ function MoviesCard({
         onCardDelete(card);
     }
 
-    // const cardSaveButtonClassName = `${
-    //     saved
-    //         ? 'card__save-button card__save-button_active'
-    //         : 'card__save-button'
-    // }`;
-
     return (
         <li className='card'>
             <a
@@ -49,14 +43,14 @@ function MoviesCard({
                 />
             </a>
 
-            <div className='movie-card__info'>
-                <h2 className='movie-card__title'>{card.nameRU}</h2>
+            <div className='card__info'>
+                <h2 className='card__title'>{card.nameRU}</h2>
 
                 {isSavedFilms ? (
                     <button
                         onClick={onDelete}
                         type='button'
-                        className='movie-card__delete-button'
+                        className='card__delete-button'
                     ></button>
                 ) : (
                     <button
@@ -68,9 +62,7 @@ function MoviesCard({
                     ></button>
                 )}
             </div>
-            <p className='movie-card__duration'>
-                {durationConverter(card.duration)}
-            </p>
+            <p className='card__duration'>{durationConverter(card.duration)}</p>
         </li>
     );
 }

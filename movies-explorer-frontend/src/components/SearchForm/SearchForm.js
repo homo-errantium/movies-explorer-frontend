@@ -34,7 +34,11 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
 
     return (
         <div className='searchForm' id='searchForm'>
-            <form className='searchForm__form' onSubmit={handleSubmit}>
+            <form
+                className='searchForm__form'
+                onSubmit={handleSubmit}
+                novalidate='novalidate'
+            >
                 <fieldset className='searchForm__field'>
                     <label
                         className='searchForm__label'

@@ -18,13 +18,25 @@ function BurgerMenu(props) {
                     onClick={handleClose}
                 ></button>
                 <nav className='burger-menu__links'>
-                    <NavLink to='/' className='burger-menu__link'>
+                    <NavLink
+                        to='/'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Главная
                     </NavLink>
-                    <NavLink to='/movies' className='burger-menu__link'>
+                    <NavLink
+                        to='/movies'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Фильмы
                     </NavLink>
-                    <NavLink to='/saved-movies' className='burger-menu__link'>
+                    <NavLink
+                        to='/saved-movies'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Сохранённые фильмы
                     </NavLink>
                 </nav>

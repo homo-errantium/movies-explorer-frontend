@@ -105,28 +105,6 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
                             Редактировать
                         </button>
 
-                        {/* {isFormDisabled ? (
-                            <button
-                                className='profile__button profile__button_type_edit'
-                                type='submit'
-                                onClick={handleEditProfileClick}
-                            >
-                                Редактировать
-                            </button>
-                        ) : (
-                            <button
-                                type='submit'
-                                disabled={!isFormValid}
-                                className={`profile__button profile__button_type_save ${
-                                    isFormValid
-                                        ? ''
-                                        : 'profile__button_type_save_disabled'
-                                }`}
-                            >
-                                Сохранить
-                            </button>
-                        )} */}
-
                         <NavLink
                             className='profile__logout-link'
                             to='/'

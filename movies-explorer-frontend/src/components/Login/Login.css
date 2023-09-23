@@ -117,8 +117,12 @@
 }
 
 .login__enter-button_disabled {
-    background-color: red;
-    color: #fff;
+    background-color: grey;
+    color: black;
+}
+
+.login__enter-button_disabled:hover {
+    cursor: not-allowed;
 }
 
 .login__reg-description {

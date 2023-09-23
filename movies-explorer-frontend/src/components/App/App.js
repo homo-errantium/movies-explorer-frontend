@@ -51,7 +51,7 @@ function App() {
                         localStorage.removeItem('allMovies');
                         setIsLoggedIn(true);
                     }
-                    // navigate.push(path);
+                    navigate(path);
                 })
                 .catch((err) => {
                     console.log(err);

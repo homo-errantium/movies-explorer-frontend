@@ -168,8 +168,11 @@
 }
 
 .profile__button_type_save_disabled {
-    background-color: #f8f8f8;
-    color: #c2c2c2;
+    background-color: grey;
+    color: black;
+}
+.profile__button_type_save_disabled:hover {
+    cursor: not-allowed;
 }
 
 .profile__logout-link {

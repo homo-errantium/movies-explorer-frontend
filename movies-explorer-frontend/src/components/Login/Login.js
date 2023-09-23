@@ -68,9 +68,6 @@ function Login({ onAuthorize, isLoading }) {
                         </span>
                     </label>
                 </fieldset>
-                {/* <span className='login__submit-error auth__submit-error'>
-                    {props.errorMessage}
-                </span> */}
                 <button
                     className={`login__enter-button ${
                         isFormValid ? '' : 'login__enter-button_disabled'

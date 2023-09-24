@@ -1,8 +1,6 @@
 import React from 'react';
 import './MoviesCard.css';
 import { durationConverter } from '../../utils/utils';
-import for_example from '../../images/for_example.jpg';
-import { useLocation } from 'react-router-dom';
 
 function MoviesCard({
     card,

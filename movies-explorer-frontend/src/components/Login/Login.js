@@ -1,30 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Login.css';
-import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
 import { EMAIL_REGEX } from '../../utils/constants';
+import logo from '../../images/logo.svg';
 
-function Login({ onAuthorize, isLoading, errorRequest, errorText }) {
-    const { enteredValues, errors, handleChange, isFormValid } = useForm();
+function Login({ onAuthorize, errorRequest, errorText }) {
+    const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
 
     function handleSubmit(e) {
         e.preventDefault();
         onAuthorize({
-            email: enteredValues.email,
-            password: enteredValues.password,
+            email: userNewValues.email,
+            password: userNewValues.password,
         });
     }
 
     return (
         <main className='login' id='login'>
-            <Link className='login__logo-link' to='/'>
+            <NavLink className='login__logo-link' to='/'>
                 <img
                     src={logo}
                     alt='логотип страницы авторизации'
                     className='login__logo'
                 />
-            </Link>
+            </NavLink>
             <h1 className='login__title'>Рады видеть!</h1>
             <form className='login__form' onSubmit={handleSubmit} noValidate>
                 <fieldset className='login__fieldset'>
@@ -36,7 +36,7 @@ function Login({ onAuthorize, isLoading, errorRequest, errorText }) {
                             type='email'
                             name='email'
                             id='login-email-input'
-                            value={enteredValues.email || ''}
+                            value={userNewValues.email || ''}
                             onChange={handleChange}
                             required
                             pattern={EMAIL_REGEX}
@@ -57,7 +57,7 @@ function Login({ onAuthorize, isLoading, errorRequest, errorText }) {
                             type='password'
                             name='password'
                             id='login-password-input'
-                            value={enteredValues.password || ''}
+                            value={userNewValues.password || ''}
                             onChange={handleChange}
                             required
                             minLength='8'
@@ -69,28 +69,26 @@ function Login({ onAuthorize, isLoading, errorRequest, errorText }) {
                     </label>
                 </fieldset>
                 <span
-                    className={`${
-                        errorRequest
-                            ? 'login__form-error'
-                            : 'login__form-error_no-display'
+                    className={`login__form-error ${
+                        errorRequest ? '' : 'login__form-error_no-display'
                     }`}
                 >
                     {errorText}
                 </span>
                 <button
                     className={`login__enter-button ${
-                        isFormValid ? '' : 'login__enter-button_disabled'
+                        isValidatedForm ? '' : 'login__enter-button_disabled'
                     }`}
                     type='submit'
-                    disabled={!isFormValid ? true : false}
+                    disabled={!isValidatedForm ? true : false}
                 >
                     Войти
                 </button>
                 <p className='login__reg-description'>
-                    Ещё не зарегистрированы?{' '}
-                    <Link className='login__reg-link ' to='/signup'>
+                    Ещё не зарегистрированы?
+                    <NavLink className='login__reg-link ' to='/signup'>
                         Регистрация
-                    </Link>
+                    </NavLink>
                 </p>
             </form>
         </main>

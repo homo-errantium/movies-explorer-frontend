@@ -37,7 +37,7 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
             <form
                 className='searchForm__form'
                 onSubmit={handleSubmit}
-                novalidate='novalidate'
+                noValidate='novalidate'
             >
                 <fieldset className='searchForm__field'>
                     <label

@@ -16,7 +16,7 @@ function Profile({
 }) {
     const currentUser = useContext(CurrentUserContext);
 
-    const { enteredValues, errors, handleChange, isFormValid, resetForm } =
+    const { userNewValues, errors, handleChange, isValidatedForm, resetForm } =
         useForm();
     const [isLastValues, setIsLastValues] = useState(false);
 
@@ -29,15 +29,15 @@ function Profile({
     function handleSubmit(e) {
         e.preventDefault();
         onUpdateUser({
-            name: enteredValues.name,
-            email: enteredValues.email,
+            name: userNewValues.name,
+            email: userNewValues.email,
         });
     }
 
     useEffect(() => {
         if (
-            currentUser.name === enteredValues.name &&
-            currentUser.email === enteredValues.email
+            currentUser.name === userNewValues.name &&
+            currentUser.email === userNewValues.email
         ) {
             setIsLastValues(true);
         } else {
@@ -45,7 +45,7 @@ function Profile({
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [enteredValues]);
+    }, [userNewValues]);
     return (
         <div className='wrapper'>
             <Header loggedIn={loggedIn} main={false} />
@@ -67,7 +67,7 @@ function Profile({
                                     id='profile-name-input'
                                     type='text'
                                     required
-                                    value={enteredValues.name || ''}
+                                    value={userNewValues.name || ''}
                                     onChange={handleChange}
                                     placeholder='Имя'
                                     pattern={USER_NAME_REGEX}
@@ -89,7 +89,7 @@ function Profile({
                                     id='profile-email-input'
                                     type='email'
                                     required
-                                    value={enteredValues.email || ''}
+                                    value={userNewValues.email || ''}
                                     onChange={handleChange}
                                     placeholder='E-mail'
                                     pattern={EMAIL_REGEX}
@@ -110,9 +110,9 @@ function Profile({
                         </span>
                         <button
                             type='submit'
-                            disabled={!isFormValid ? true : false}
+                            disabled={!isValidatedForm ? true : false}
                             className={
-                                !isFormValid || isLoading || isLastValues
+                                !isValidatedForm || isLoading || isLastValues
                                     ? 'profile__button profile__button_type_save profile__button_type_save_disabled'
                                     : 'profile__button profile__button_type_save'
                             }

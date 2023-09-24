@@ -6,14 +6,14 @@ import useForm from '../hooks/useForm';
 import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
 function Register({ onRegister, isLoading, errorRequest, errorText }) {
-    const { enteredValues, errors, handleChange, isFormValid } = useForm();
+    const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
 
     function handleSubmit(e) {
         e.preventDefault();
         onRegister({
-            name: enteredValues.name,
-            email: enteredValues.email,
-            password: enteredValues.password,
+            name: userNewValues.name,
+            email: userNewValues.email,
+            password: userNewValues.password,
         });
     }
 
@@ -41,7 +41,7 @@ function Register({ onRegister, isLoading, errorRequest, errorText }) {
                             id='register-name-input'
                             minLength='2'
                             maxLength='40'
-                            value={enteredValues.name || ''}
+                            value={userNewValues.name || ''}
                             onChange={handleChange}
                             required
                             placeholder='Имя'
@@ -61,7 +61,7 @@ function Register({ onRegister, isLoading, errorRequest, errorText }) {
                             type='email'
                             name='email'
                             id='register-email-input'
-                            value={enteredValues.email || ''}
+                            value={userNewValues.email || ''}
                             onChange={handleChange}
                             required
                             placeholder='E-mail'
@@ -81,7 +81,7 @@ function Register({ onRegister, isLoading, errorRequest, errorText }) {
                             type='password'
                             name='password'
                             id='register-password-input'
-                            value={enteredValues.password || ''}
+                            value={userNewValues.password || ''}
                             onChange={handleChange}
                             required
                             minLength='8'
@@ -104,10 +104,10 @@ function Register({ onRegister, isLoading, errorRequest, errorText }) {
                 </span>
                 <button
                     className={`register__enter-button ${
-                        isFormValid ? '' : 'register__enter-button_disabled'
+                        isValidatedForm ? '' : 'register__enter-button_disabled'
                     }`}
                     type='submit'
-                    disabled={!isFormValid}
+                    disabled={!isValidatedForm}
                 >
                     Зарегистрироваться
                 </button>

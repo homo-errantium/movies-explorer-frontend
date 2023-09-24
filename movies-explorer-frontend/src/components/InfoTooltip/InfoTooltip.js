@@ -3,13 +3,7 @@ import './InfoTooltip.css';
 import logoGood from '../../images/logoGood.svg';
 import logoBad from '../../images/logoBad.svg';
 
-function InfoTooltip({
-    onClose,
-    isUpdate,
-    isRegForm,
-    isProfileForm,
-    isRegistred,
-}) {
+function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
     return (
         <div
             className={`popup ${
@@ -23,9 +17,8 @@ function InfoTooltip({
                     className='popup__close-button'
                     onClick={onClose}
                 />
-                {isRegForm && isRegistred && (
+                {isRegForm && isOk && (
                     <>
-                        {' '}
                         <img
                             className='popup__signup-image'
                             src={logoGood}
@@ -36,9 +29,8 @@ function InfoTooltip({
                         </h2>
                     </>
                 )}
-                {isRegForm && !isRegistred && (
+                {isRegForm && !isOk && (
                     <>
-                        {' '}
                         <img
                             className='popup__signup-image'
                             src={logoBad}
@@ -50,7 +42,7 @@ function InfoTooltip({
                     </>
                 )}
 
-                {isProfileForm && isUpdate && (
+                {isProfileForm && isOk && (
                     <>
                         <img
                             className='popup__signup-image'
@@ -63,7 +55,7 @@ function InfoTooltip({
                     </>
                 )}
 
-                {isProfileForm && !isUpdate && (
+                {isProfileForm && !isOk && (
                     <>
                         {' '}
                         <img
@@ -88,7 +80,7 @@ export default InfoTooltip;
 // import logoGood from '../../images/logoGood.svg';
 // import logoBad from '../../images/logoBad.svg';
 
-// function InfoTooltip({ onClose, isSuccess, isUpdate }) {
+// function InfoTooltip({ onClose, isSuccess, isOk }) {
 //     return (
 //         <div className={`popup ${!isSuccess ? 'popup_opened' : ''}`}>
 //             <div className='popup__container'>
@@ -104,7 +96,7 @@ export default InfoTooltip;
 //                     alt='Что-то пошло не так'
 //                 />
 //                 <h2 className='popup__signup-title'>{`${
-//                     isUpdate
+//                     isOk
 //                         ? 'Редактирование прошло успешно!'
 //                         : 'Что-то пошло не так! Попробуйте ещё раз.'
 //                 }`}</h2>

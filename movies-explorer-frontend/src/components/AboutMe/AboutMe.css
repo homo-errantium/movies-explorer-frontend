@@ -193,12 +193,12 @@
     }
     .about-me__student-specialization {
         font-size: 11px;
-        line-height: 16px; /* 145.455% */
+        line-height: 16px;
         text-align: left;
     }
     .about-me__student-info {
         font-size: 11px;
-        line-height: 16px; /* 145.455% */
+        line-height: 16px;
         margin-bottom: 54px;
     }
 }

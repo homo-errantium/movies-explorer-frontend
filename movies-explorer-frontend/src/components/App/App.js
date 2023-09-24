@@ -31,14 +31,13 @@ function App() {
     const [currentUser, setCurrentUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isUpdate, setIsUpdate] = useState(false);
+    const [isOk, setIsOk] = useState(false);
     const path = location.pathname;
     const [isSuccess, setIsSuccess] = useState(true);
     const [errorRequest, setErrorRequest] = React.useState(false);
     const [errorText, setErrorText] = React.useState(false);
     const [isProfileForm, setIsProfileForm] = useState(false);
     const [isRegForm, setIsRegForm] = useState(false);
-    const [isRegistred, setIsRegistred] = useState(false);
 
     //Проверка токена и авторизация пользователя
     useEffect(() => {
@@ -89,19 +88,18 @@ function App() {
             .register(name, email, password)
             .then(() => {
                 handleAuthorize({ email, password });
-                setIsRegistred(true);
+                setIsOk(true);
                 setIsRegForm(true);
                 setErrorRequest(false);
             })
             .catch((err) => {
                 console.log(typeof err);
-                setIsRegistred(false);
+                console.log(err.message);
+                setIsOk(false);
                 setIsRegForm(true);
                 setErrorRequest(true);
-                // setIsSuccess(false);
                 if (err.code === 409) {
                     setErrorText('Пользователь с таким email уже существует');
-                    console.error('Пользователь с таким email уже существует');
                     return;
                 }
                 setErrorText('При регистрации пользователя произошла ошибка.');
@@ -136,14 +134,14 @@ function App() {
         mainApi
             .setUserInfo(newUserInfo)
             .then((data) => {
-                setIsUpdate(true);
+                setIsOk(true);
                 setCurrentUser(data);
                 setIsProfileForm(true);
                 setErrorRequest(false);
             })
             .catch((err) => {
                 console.log(err);
-                setIsUpdate(false);
+                setIsOk(false);
                 handleUnauthorized(err);
                 setIsProfileForm(true);
                 setErrorRequest(true);
@@ -207,13 +205,13 @@ function App() {
     function closePopup() {
         setIsRegForm(false);
         setIsProfileForm(false);
-        setIsRegistred(false);
+        setIsOk(false);
         setIsSuccess(true);
     }
 
     // function closeUnsuccessPopup() {
     //     setIsSuccess(true);
-    //     setIsUpdate(false);
+    //     setIsOk(false);
     // }
 
     return (
@@ -230,7 +228,6 @@ function App() {
                             !isLoggedIn ? (
                                 <Login
                                     onAuthorize={handleAuthorize}
-                                    isLoading={isLoading}
                                     errorRequest={errorRequest}
                                     errorText={errorText}
                                 />
@@ -320,9 +317,8 @@ function App() {
                 /> */}
                 <InfoTooltip
                     isProfileForm={isProfileForm}
-                    isRegistred={isRegistred}
+                    isOk={isOk}
                     isRegForm={isRegForm}
-                    isUpdate={isUpdate}
                     onClose={closePopup}
                 />
             </div>

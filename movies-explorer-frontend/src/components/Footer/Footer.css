@@ -24,9 +24,24 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .footer__year {
     font-size: 13px;
     font-weight: 400;
+}
+
+.footer__links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__item:last-child {
+    margin: 0;
+}
+
+.footer__item {
+    margin-right: 20px;
 }
 
 .footer__link {
@@ -40,20 +55,6 @@
 .footer__link:hover {
     opacity: 0.7;
     cursor: pointer;
-}
-
-.footer__item:last-child {
-    margin: 0;
-}
-
-.footer__links {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer__item {
-    margin-right: 20px;
 }
 
 @media (max-width: 768px) {

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
+import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Register({ onRegister, isLoading }) {
+function Register({ onRegister, isLoading, errorRequest, errorText }) {
     const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
     function handleSubmit(e) {
@@ -44,6 +45,7 @@ function Register({ onRegister, isLoading }) {
                             onChange={handleChange}
                             required
                             placeholder='Имя'
+                            pattern={USER_NAME_REGEX}
                         />
                         <span className='register__input-error'>
                             {errors.name}
@@ -63,6 +65,7 @@ function Register({ onRegister, isLoading }) {
                             onChange={handleChange}
                             required
                             placeholder='E-mail'
+                            pattern={EMAIL_REGEX}
                         />
                         <span className='register__input-error'>
                             {errors.email}
@@ -90,6 +93,15 @@ function Register({ onRegister, isLoading }) {
                         </span>
                     </label>
                 </fieldset>
+                <span
+                    className={`${
+                        errorRequest
+                            ? 'register__form-error'
+                            : 'register__form-error_no-display'
+                    }`}
+                >
+                    {errorText}
+                </span>
                 <button
                     className={`register__enter-button ${
                         isFormValid ? '' : 'register__enter-button_disabled'

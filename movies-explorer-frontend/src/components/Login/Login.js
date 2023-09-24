@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
 import { EMAIL_REGEX } from '../../utils/constants';
 
-function Login({ onAuthorize, isLoading }) {
+function Login({ onAuthorize, isLoading, errorRequest, errorText }) {
     const { enteredValues, errors, handleChange, isFormValid } = useForm();
 
     function handleSubmit(e) {
@@ -68,6 +68,15 @@ function Login({ onAuthorize, isLoading }) {
                         </span>
                     </label>
                 </fieldset>
+                <span
+                    className={`${
+                        errorRequest
+                            ? 'login__form-error'
+                            : 'login__form-error_no-display'
+                    }`}
+                >
+                    {errorText}
+                </span>
                 <button
                     className={`login__enter-button ${
                         isFormValid ? '' : 'login__enter-button_disabled'

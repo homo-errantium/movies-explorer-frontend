@@ -6,7 +6,14 @@ import useForm from '../hooks/useForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
+function Profile({
+    signOut,
+    onUpdateUser,
+    loggedIn,
+    isLoading,
+    errorRequest,
+    errorText,
+}) {
     const currentUser = useContext(CurrentUserContext);
 
     const { enteredValues, errors, handleChange, isFormValid, resetForm } =
@@ -63,7 +70,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
                                     value={enteredValues.name || ''}
                                     onChange={handleChange}
                                     placeholder='Имя'
-                                    // pattern={USER_NAME_REGEX}
+                                    pattern={USER_NAME_REGEX}
                                     minLength={2}
                                     maxLength='30'
                                 />
@@ -85,14 +92,22 @@ function Profile({ signOut, onUpdateUser, loggedIn, isLoading }) {
                                     value={enteredValues.email || ''}
                                     onChange={handleChange}
                                     placeholder='E-mail'
-                                    // pattern={EMAIL_REGEX}
+                                    pattern={EMAIL_REGEX}
                                 />
                                 <span className='profile__input-error'>
                                     {errors.email}
                                 </span>
                             </label>
                         </fieldset>
-
+                        <span
+                            className={`${
+                                errorRequest
+                                    ? 'profile__form-error'
+                                    : 'profile__form-error_no-display'
+                            }`}
+                        >
+                            {errorText}
+                        </span>
                         <button
                             type='submit'
                             disabled={!isFormValid ? true : false}

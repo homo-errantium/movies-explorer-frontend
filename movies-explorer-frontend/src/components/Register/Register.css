@@ -99,7 +99,7 @@
     line-height: 12px;
     color: #ff4062;
     position: absolute;
-    top: 51px;
+    top: 45px;
     text-align: left;
 }
 
@@ -145,6 +145,18 @@
     color: #4285f4;
     text-decoration: none;
     margin-left: 2px;
+}
+
+.register__form-error {
+    padding-bottom: 20px;
+    color: #ee3465;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.register__form-error_no-display {
+    display: none;
 }
 
 @media (max-width: 1300px) {

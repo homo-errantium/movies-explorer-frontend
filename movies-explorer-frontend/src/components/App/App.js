@@ -34,7 +34,8 @@ function App() {
     const [isUpdate, setIsUpdate] = useState(false);
     const path = location.pathname;
     const [isSuccess, setIsSuccess] = useState(true);
-
+    const [errorRequest, setErrorRequest] = React.useState(false);
+    const [errorText, setErrorText] = React.useState(false);
     const [isProfileForm, setIsProfileForm] = useState(false);
     const [isRegForm, setIsRegForm] = useState(false);
     const [isRegistred, setIsRegistred] = useState(false);
@@ -90,12 +91,20 @@ function App() {
                 handleAuthorize({ email, password });
                 setIsRegistred(true);
                 setIsRegForm(true);
+                setErrorRequest(false);
             })
             .catch((err) => {
+                console.log(typeof err);
                 setIsRegistred(false);
                 setIsRegForm(true);
+                setErrorRequest(true);
                 // setIsSuccess(false);
-                console.log(err);
+                if (err.code === 409) {
+                    setErrorText('Пользователь с таким email уже существует');
+                    console.error('Пользователь с таким email уже существует');
+                    return;
+                }
+                setErrorText('При регистрации пользователя произошла ошибка.');
             });
     }
 
@@ -107,12 +116,19 @@ function App() {
                 if (res) {
                     setIsLoggedIn(true);
                     localStorage.setItem('jwt', res.token);
-                    navigate.push('./movies');
+                    navigate('./movies');
+                    setErrorRequest(false);
                 }
             })
             .catch((err) => {
+                setIsLoggedIn(false);
                 setIsSuccess(false);
-                console.log(err);
+                setErrorRequest(true);
+                if (err.code === 401) {
+                    setErrorText('Вы ввели неправильный логин или пароль.');
+                    return;
+                }
+                setErrorText('При авторизации произошла ошибка.');
             });
     }
 
@@ -123,12 +139,23 @@ function App() {
                 setIsUpdate(true);
                 setCurrentUser(data);
                 setIsProfileForm(true);
+                setErrorRequest(false);
             })
             .catch((err) => {
-                setIsUpdate(false);
                 console.log(err);
+                setIsUpdate(false);
                 handleUnauthorized(err);
                 setIsProfileForm(true);
+                setErrorRequest(true);
+                // setIsSuccess(false);
+                if (err.code === 500) {
+                    setErrorText('Пользователь с таким email уже существует');
+                    console.error('Пользователь с таким email уже существует');
+                    return;
+                }
+                setErrorText(
+                    'При обновлении данных пользователя произошла ошибка.'
+                );
             });
     }
 
@@ -174,7 +201,7 @@ function App() {
         localStorage.removeItem('movieSearch');
         localStorage.removeItem('shortMovies');
         localStorage.removeItem('allMovies');
-        navigate.push('/');
+        navigate('/');
     };
 
     function closePopup() {
@@ -204,6 +231,8 @@ function App() {
                                 <Login
                                     onAuthorize={handleAuthorize}
                                     isLoading={isLoading}
+                                    errorRequest={errorRequest}
+                                    errorText={errorText}
                                 />
                             ) : (
                                 <Navigate to='/' />
@@ -219,6 +248,8 @@ function App() {
                                 <Register
                                     onRegister={handleRegister}
                                     isLoading={isLoading}
+                                    errorRequest={errorRequest}
+                                    errorText={errorText}
                                 />
                             ) : (
                                 <Navigate to='/' />
@@ -271,6 +302,8 @@ function App() {
                                         onUpdateUser={handleUpdateUser}
                                         loggedIn={isLoggedIn}
                                         isLoading={isLoading}
+                                        errorRequest={errorRequest}
+                                        errorText={errorText}
                                     />
                                 }
                             </>

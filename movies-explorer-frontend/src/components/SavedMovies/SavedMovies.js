@@ -7,9 +7,9 @@ import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 
 function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
-    const [filteredMovies, setFilteredMovies] = useState(savedMovies); //отфильтрованные по запросу и чекбоксу
-    const [isShortMovies, setIsShortMovies] = useState(false); //включен ли чекбокс короткометражек
-    const [isNotFound, setIsNotFound] = useState(false); //фильмы по запросу не найдены
+    const [filteredMovies, setFilteredMovies] = useState(savedMovies);
+    const [isShortMovies, setIsShortMovies] = useState(false);
+    const [isNotFound, setIsNotFound] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
 
     //submit

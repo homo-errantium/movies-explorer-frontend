@@ -12,7 +12,6 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные фильмы
     const [isShortMovies, setIsShortMovies] = useState(false); //короткометражки?
     const [isLoading, setIsLoading] = useState(false);
-
     const [isReqErr, setIsReqErr] = useState(false); //ошибка запроса
     const [isNotFindMovies, setIsNotFindMovies] = useState(false); //фильмы не найдены
 
@@ -41,15 +40,14 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     }
 
     function onSearchMovies(query) {
-        console.log(query);
-
         localStorage.setItem('movieSearch', query);
         localStorage.setItem('shortMovies', isShortMovies);
-
         if (localStorage.getItem('allMovies')) {
+            //если фильмы есть в локальном хранилище, берем оттуда
             const movies = JSON.parse(localStorage.getItem('allMovies'));
             handleFilterMovies(movies, query, isShortMovies);
         } else {
+            //если фильмов нет в локалке, скачиваем
             setIsLoading(true);
             moviesApi
                 .getCards()
@@ -67,6 +65,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         }
     }
 
+    //эффект: если влокалке есть короткометражки, сохраняем в масив
     useEffect(() => {
         if (localStorage.getItem('shortMovies') === 'true') {
             setIsShortMovies(true);
@@ -75,6 +74,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         }
     }, []);
 
+    //эффек: если есть фильмы в локалке, сохраняем в массив
     useEffect(() => {
         if (localStorage.getItem('movies')) {
             const movies = JSON.parse(localStorage.getItem('movies'));
@@ -87,6 +87,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         }
     }, []);
 
+    //эффеки: если есть фильмы по запросу, сохраняем в массив
     useEffect(() => {
         if (localStorage.getItem('movieSearch')) {
             if (filteredMovies.length === 0) {

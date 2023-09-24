@@ -35,7 +35,6 @@ export const getContent = (token) => {
     }).then((res) => checkResponse(res));
 };
 
-// метод делает запрос серверу и получает данные профиля
 export const getUserInfo = () => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
@@ -46,7 +45,6 @@ export const getUserInfo = () => {
     }).then((res) => checkResponse(res));
 };
 
-// метод изменяет данные профиля на сервере
 export const setUserInfo = (data) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'PATCH',

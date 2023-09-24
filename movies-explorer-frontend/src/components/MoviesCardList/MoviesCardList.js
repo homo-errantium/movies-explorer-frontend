@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import SearchError from '../SearchError/SearchError';
 import Preloader from '../Preloader/Preloader';
 import {
     SHOW_MORE_DECKTOP,
@@ -15,7 +14,7 @@ function MoviesCardList({
     isSavedFilms,
     isLoading,
     isReqErr,
-    isNotFound,
+    isNotFindMovies,
     handleLikeClick,
     savedMovies,
     onCardDelete,
@@ -52,11 +51,7 @@ function MoviesCardList({
             setShownMovies(shownMovies + SHOW_MORE_DECKTOP);
         } else if (display > 1023) {
             setShownMovies(shownMovies + SHOW_MORE_TABLET);
-        }
-        // else if (display > 800) {
-        //   setShownMovies(shownMovies + 2);
-        // }
-        else if (display < 1023) {
+        } else if (display < 1023) {
             setShownMovies(shownMovies + SHOW_MORE_MOBILE);
         }
     }
@@ -68,17 +63,19 @@ function MoviesCardList({
     return (
         <section className='movies-card-list'>
             {isLoading && <Preloader />}
-            {isNotFound && !isLoading && (
-                <SearchError errorText={'Ничего не найдено'} />
+            {isNotFindMovies && !isLoading && (
+                <p className='movies-card-list__search-error'>
+                    Ничего не найдено
+                </p>
             )}
             {isReqErr && !isLoading && (
-                <SearchError
-                    errorText={
-                        'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-                    }
-                />
+                <p className='movies-card-list__search-error'>
+                    Во время запроса произошла ошибка. Возможно, проблема с
+                    соединением или сервер недоступен. Подождите немного и
+                    попробуйте ещё раз
+                </p>
             )}
-            {!isLoading && !isReqErr && !isNotFound && (
+            {!isLoading && !isReqErr && !isNotFindMovies && (
                 <>
                     {pathname === '/saved-movies' ? (
                         <>
@@ -136,37 +133,6 @@ function MoviesCardList({
                     )}
                 </>
             )}
-
-            {/* <ul className='movies-card-list__list'>
-                {displayedMovies?.map((movie) => {
-                    return (
-                        <MoviesCard
-                            movie={movie}
-                            key={props.saved ? movie.movieId : movie.id}
-                            saved={props.saved}
-                            onMovieSave={props.onMovieSave}
-                            onDeleteMovie={props.onDeleteMovie}
-                            savedMovies={props.savedMovies}
-                        />
-                    );
-                })}
-            </ul>
-
-            <button
-                type='button'
-                className={
-                    props.saved
-                        ? 'movies-card-list__more-button movies-card-list__more-button_invisible'
-                        : `movies-card-list__more-button ${
-                              props.movies?.length === displayedMovies?.length
-                                  ? 'movies-card-list__more-button_invisible'
-                                  : ''
-                          }`
-                }
-                onClick={handleMoviesIncrease}
-            >
-                Ещё
-            </button> */}
         </section>
     );
 }

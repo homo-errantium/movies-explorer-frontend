@@ -2,12 +2,12 @@ import { SHORTS } from './constants';
 
 export const checkResponse = (res) => {
     if (res.ok) {
-        return res.json(); //если да, то возвращает полученные данные
+        return res.json();
     }
-    return Promise.reject(`Error: ${res.status}`); //иначе возвращает ошибку
+    return Promise.reject(res);
+    // return Promise.reject(`Error: ${res.status}`);
 };
 
-//фильтр по запросу
 export function filterMovies(movies, query) {
     const moviesByQuery = movies.filter((movie) => {
         const movieRu = String(movie.nameRU).toLowerCase().trim();
@@ -21,12 +21,10 @@ export function filterMovies(movies, query) {
     return moviesByQuery;
 }
 
-//фильтр по длительности
 export function filterDuration(movies) {
     return movies.filter((movie) => movie.duration < SHORTS);
 }
 
-//конвертер длительности фильмов
 export function durationConverter(duration) {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;

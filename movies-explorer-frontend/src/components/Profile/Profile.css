@@ -110,7 +110,7 @@
 
 .profile__input-error {
     font-family: 'Inter', 'Arial', 'sans-serif';
-    display: none;
+    /* display: none; */
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
@@ -225,9 +225,6 @@
     .profile__fieldset {
         margin-bottom: 174px;
     }
-    /* .profile__input {
-        width: 375px;
-    } */
 }
 @media (max-width: 754px) {
     .profile {

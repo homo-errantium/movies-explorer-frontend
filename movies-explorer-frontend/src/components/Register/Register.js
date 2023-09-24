@@ -5,7 +5,7 @@ import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
 import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Register({ onRegister, isLoading, errorRequest, errorText }) {
+function Register({ onRegister, errorRequest, errorText }) {
     const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
 
     function handleSubmit(e) {

@@ -6,14 +6,7 @@ import useForm from '../hooks/useForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Profile({
-    signOut,
-    onUpdateUser,
-    loggedIn,
-    isLoading,
-    errorRequest,
-    errorText,
-}) {
+function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
     const currentUser = useContext(CurrentUserContext);
 
     const { userNewValues, errors, handleChange, isValidatedForm, resetForm } =
@@ -100,9 +93,9 @@ function Profile({
                             </label>
                         </fieldset>
                         <span
-                            className={`${
+                            className={`profile__form-error ${
                                 errorRequest
-                                    ? 'profile__form-error'
+                                    ? ''
                                     : 'profile__form-error_no-display'
                             }`}
                         >
@@ -112,7 +105,7 @@ function Profile({
                             type='submit'
                             disabled={!isValidatedForm ? true : false}
                             className={
-                                !isValidatedForm || isLoading || isLastValues
+                                !isValidatedForm || isLastValues
                                     ? 'profile__button profile__button_type_save profile__button_type_save_disabled'
                                     : 'profile__button profile__button_type_save'
                             }

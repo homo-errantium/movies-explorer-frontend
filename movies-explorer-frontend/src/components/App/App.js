@@ -20,24 +20,21 @@ import NotFound from '../NotFound/NotFound';
 import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-
-// import * as moviesApi from '../../utils/MoviesApi';
 import * as mainApi from '../../utils/MainApi';
 
 function App() {
-    const navigate = useNavigate();
     const location = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
     const [isOk, setIsOk] = useState(false);
-    const path = location.pathname;
-    const [isSuccess, setIsSuccess] = useState(true);
     const [errorRequest, setErrorRequest] = React.useState(false);
     const [errorText, setErrorText] = React.useState(false);
     const [isProfileForm, setIsProfileForm] = useState(false);
     const [isRegForm, setIsRegForm] = useState(false);
+
+    const path = location.pathname;
+    const navigate = useNavigate();
 
     //Проверка токена и авторизация пользователя
     useEffect(() => {
@@ -87,27 +84,29 @@ function App() {
         mainApi
             .register(name, email, password)
             .then(() => {
-                handleAuthorize({ email, password });
+                handleLogin({ email, password });
                 setIsOk(true);
                 setIsRegForm(true);
                 setErrorRequest(false);
             })
             .catch((err) => {
-                console.log(typeof err);
-                console.log(err.message);
+                console.log(err.status);
                 setIsOk(false);
                 setIsRegForm(true);
                 setErrorRequest(true);
-                if (err.code === 409) {
+                if (err.status === 409) {
                     setErrorText('Пользователь с таким email уже существует');
                     return;
+                } else {
+                    setErrorText(
+                        'При регистрации пользователя произошла ошибка.'
+                    );
                 }
-                setErrorText('При регистрации пользователя произошла ошибка.');
             });
     }
 
     //авторизация пользователя
-    function handleAuthorize({ email, password }) {
+    function handleLogin({ email, password }) {
         mainApi
             .authorize(email, password)
             .then((res) => {
@@ -119,14 +118,15 @@ function App() {
                 }
             })
             .catch((err) => {
+                console.log(err.status);
                 setIsLoggedIn(false);
-                setIsSuccess(false);
                 setErrorRequest(true);
-                if (err.code === 401) {
+                if (err.status === 401) {
                     setErrorText('Вы ввели неправильный логин или пароль.');
                     return;
+                } else {
+                    setErrorText('При авторизации произошла ошибка.');
                 }
-                setErrorText('При авторизации произошла ошибка.');
             });
     }
 
@@ -140,20 +140,20 @@ function App() {
                 setErrorRequest(false);
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err.status);
                 setIsOk(false);
                 handleUnauthorized(err);
                 setIsProfileForm(true);
                 setErrorRequest(true);
-                // setIsSuccess(false);
-                if (err.code === 500) {
+                if (err.status === 500) {
                     setErrorText('Пользователь с таким email уже существует');
                     console.error('Пользователь с таким email уже существует');
                     return;
+                } else {
+                    setErrorText(
+                        'При обновлении данных пользователя произошла ошибка.'
+                    );
                 }
-                setErrorText(
-                    'При обновлении данных пользователя произошла ошибка.'
-                );
             });
     }
 
@@ -164,8 +164,7 @@ function App() {
                 setSavedMovies([newMovie, ...savedMovies]);
             })
             .catch((err) => {
-                setIsSuccess(false);
-                console.log(err);
+                console.log(err.status);
                 handleUnauthorized(err);
             });
     }
@@ -179,8 +178,7 @@ function App() {
                 );
             })
             .catch((err) => {
-                setIsSuccess(false);
-                console.log(err);
+                console.log(err.status);
                 handleUnauthorized(err);
             });
     }
@@ -206,13 +204,7 @@ function App() {
         setIsRegForm(false);
         setIsProfileForm(false);
         setIsOk(false);
-        setIsSuccess(true);
     }
-
-    // function closeUnsuccessPopup() {
-    //     setIsSuccess(true);
-    //     setIsOk(false);
-    // }
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -227,7 +219,7 @@ function App() {
                         element={
                             !isLoggedIn ? (
                                 <Login
-                                    onAuthorize={handleAuthorize}
+                                    onAuthorize={handleLogin}
                                     errorRequest={errorRequest}
                                     errorText={errorText}
                                 />
@@ -244,7 +236,6 @@ function App() {
                             !isLoggedIn ? (
                                 <Register
                                     onRegister={handleRegister}
-                                    isLoading={isLoading}
                                     errorRequest={errorRequest}
                                     errorText={errorText}
                                 />
@@ -253,7 +244,7 @@ function App() {
                             )
                         }
                     />
-
+                    {/* страница фильмы */}
                     <Route
                         path='/movies'
                         index
@@ -271,6 +262,8 @@ function App() {
                             </>
                         }
                     />
+
+                    {/* страница созраненные фиьлмы */}
                     <Route
                         path='/saved-movies'
                         index
@@ -287,6 +280,8 @@ function App() {
                             </>
                         }
                     />
+
+                    {/* страница профиля */}
                     <Route
                         path='/profile'
                         index
@@ -298,7 +293,6 @@ function App() {
                                         signOut={handleSignOut}
                                         onUpdateUser={handleUpdateUser}
                                         loggedIn={isLoggedIn}
-                                        isLoading={isLoading}
                                         errorRequest={errorRequest}
                                         errorText={errorText}
                                     />
@@ -308,13 +302,10 @@ function App() {
                     />
 
                     {/* страница-ошибка */}
-
                     <Route path='*' element={<NotFound />} />
                 </Routes>
-                {/* <InfoTooltip
-                    isSuccess={isSuccess}
-                    onClose={closeUnsuccessPopup}
-                /> */}
+
+                {/* окно попапа уведомления */}
                 <InfoTooltip
                     isProfileForm={isProfileForm}
                     isOk={isOk}

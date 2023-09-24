@@ -54,13 +54,6 @@ function SearchForm({ onSearchMovies, onFilter, isShortMovies }) {
                         placeholder='Фильм'
                         required
                     />
-                    {/* <span
-                        className={`searchForm__error ${
-                            isSearchValid ? 'searchForm__error_hidden' : ''
-                        }`}
-                    >
-                        Нужно ввести ключевое слово
-                    </span> */}
                 </fieldset>
 
                 <button className='searchForm__button' type='submit'>

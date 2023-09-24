@@ -5,9 +5,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 // import TestBurgerMenu from '../TestBurgerMenu/TestBurgerMenu';
 import account from '../../images/account.svg';
 
-function Navigation(props) {
-    const [isMenuShown, setIsMenuShown] = React.useState(false);
-
+function Navigation({ loggedIn }) {
     const [isClicked, setIsClicked] = useState(false);
 
     function handleOpen() {
@@ -20,11 +18,9 @@ function Navigation(props) {
 
     return (
         <div
-            className={
-                props.loggedIn ? 'navigation' : 'navigation navigation_right'
-            }
+            className={loggedIn ? 'navigation' : 'navigation navigation_right'}
         >
-            {props.loggedIn ? (
+            {loggedIn ? (
                 <>
                     <nav className='navigation__movies'>
                         <Link

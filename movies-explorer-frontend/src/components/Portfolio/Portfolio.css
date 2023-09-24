@@ -89,12 +89,12 @@
     }
     .portfolio__title {
         font-size: 14px;
-        line-height: 20px; /* 142.857% */
+        line-height: 20px;
         margin-bottom: 41px;
     }
     .portfolio__text {
         font-size: 18px;
-        line-height: 28px; /* 155.556% */
+        line-height: 28px;
         letter-spacing: -0.72px;
     }
     @media (max-width: 320px) {

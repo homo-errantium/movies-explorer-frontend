@@ -46,17 +46,21 @@ export const getUserInfo = () => {
 };
 
 export const setUserInfo = (data) => {
-    return fetch(`${BASE_URL}/users/me`, {
-        method: 'PATCH',
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-        }),
-    }).then((res) => checkResponse(res));
+    return (
+        fetch(`${BASE_URL}/users/me`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+            }),
+        })
+            // .then((res) => console.log(res))
+            .then((res) => checkResponse(res))
+    );
 };
 
 export const getCards = () => {

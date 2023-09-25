@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
-import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
+import { USERNAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
 function Register({ onRegister, errorRequest, errorText }) {
     const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
@@ -45,7 +45,7 @@ function Register({ onRegister, errorRequest, errorText }) {
                             onChange={handleChange}
                             required
                             placeholder='Имя'
-                            pattern={USER_NAME_REGEX}
+                            pattern={USERNAME_REGEX}
                         />
                         <span className='register__input-error'>
                             {errors.name}

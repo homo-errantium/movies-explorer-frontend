@@ -1,4 +1,4 @@
-import { SHORTS } from './constants';
+import { SHORT_MOVIES } from './constants';
 
 export const checkResponse = (res) => {
     if (res.ok) {
@@ -22,7 +22,7 @@ export function filterMovies(movies, query) {
 }
 
 export function filterDuration(movies) {
-    return movies.filter((movie) => movie.duration < SHORTS);
+    return movies.filter((movie) => movie.duration < SHORT_MOVIES);
 }
 
 export function durationConverter(duration) {

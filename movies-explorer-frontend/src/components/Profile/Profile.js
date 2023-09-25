@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import { NavLink } from 'react-router-dom';
 import useForm from '../hooks/useForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { USER_NAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
+import { USERNAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
 function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
     const currentUser = useContext(CurrentUserContext);
@@ -27,6 +27,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
         });
     }
 
+    //эффект: отключение кнопки редактирования, если данные не изменились
     useEffect(() => {
         if (
             currentUser.name === userNewValues.name &&
@@ -36,9 +37,9 @@ function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
         } else {
             setIsLastValues(false);
         }
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userNewValues]);
+
     return (
         <div className='wrapper'>
             <Header loggedIn={loggedIn} main={false} />
@@ -63,7 +64,7 @@ function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
                                     value={userNewValues.name || ''}
                                     onChange={handleChange}
                                     placeholder='Имя'
-                                    pattern={USER_NAME_REGEX}
+                                    pattern={USERNAME_REGEX}
                                     minLength={2}
                                     maxLength='30'
                                 />
@@ -103,7 +104,9 @@ function Profile({ signOut, onUpdateUser, loggedIn, errorRequest, errorText }) {
                         </span>
                         <button
                             type='submit'
-                            disabled={!isValidatedForm ? true : false}
+                            disabled={
+                                !isValidatedForm || isLastValues ? true : false
+                            }
                             className={
                                 !isValidatedForm || isLastValues
                                     ? 'profile__button profile__button_type_save profile__button_type_save_disabled'

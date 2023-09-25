@@ -1,27 +1,30 @@
-// Тексты ошибок (Ошибки ниже отображаются не под инпутами, а при получении ошибки после отправки запроса)
-const ERRORTEXT_LOGIN = 'Вы ввели неправильный логин или пароль.';
-const ERRORTEXT_LOGIN_INCORRECTTOKEN = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.';
-const ERRORTEXT_LOGIN_WRONGTOKEN = 'При авторизации произошла ошибка. Переданный токен некорректен.';
+const ERRORTEXT_INCORRECT_USER_DATA = 'Вы ввели неправильный логин или пароль.';
+
+const ERRORTEXT_LOGIN = 'При авторизации произошла ошибка.';
 
 const ERRORTEXT_REGISTER = 'При регистрации пользователя произошла ошибка.';
-const ERRORTEXT_REGISTER_OCCUPIEDEMAIL = 'Пользователь с таким email уже существует.';
 
-const ERRORTEXT_PATCHUSER = 'При обновлении профиля произошла ошибка.';
-const ERRORTEXT_PATCHUSER_OCCUPIEDEMAIL = 'Пользователь с таким email уже существует.';
+const ERRORTEXT_UPDATE_USER_DATA = 'При обновлении профиля произошла ошибка.';
 
 const ERRORTEXT_SERVERERROR = '500 На сервере произошла ошибка.';
 
-const ERRORTEXT_NOFOUND = '404 Страница по указанному маршруту не найдена.';
+const ERRORTEXT_EMAIL_EXIST = 'Пользователь с таким email уже существует.';
 
+const ERRORTEXT_SMTHNG_WRONG = 'Что-то пошло не так! Попробуйте ещё раз.';
 
-module.exports = {
-  ERRORTEXT_LOGIN,
-  ERRORTEXT_LOGIN_INCORRECTTOKEN,
-  ERRORTEXT_LOGIN_WRONGTOKEN,
-  ERRORTEXT_REGISTER,
-  ERRORTEXT_REGISTER_OCCUPIEDEMAIL,
-  ERRORTEXT_PATCHUSER,
-  ERRORTEXT_PATCHUSER_OCCUPIEDEMAIL,
-  ERRORTEXT_SERVERERROR,
-  ERRORTEXT_NOFOUND
+const ERRORTEXT_NOT_FIND_NTHNG = 'Ничего не найдено.';
+
+const ERRORTEXT_MOVIES_SMTHNG_WRONG =
+    'Во время запроса произошла ошибка. Возможно, проблема с   соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
+
+export {
+    ERRORTEXT_LOGIN,
+    ERRORTEXT_REGISTER,
+    ERRORTEXT_EMAIL_EXIST,
+    ERRORTEXT_UPDATE_USER_DATA,
+    ERRORTEXT_SERVERERROR,
+    ERRORTEXT_INCORRECT_USER_DATA,
+    ERRORTEXT_SMTHNG_WRONG,
+    ERRORTEXT_MOVIES_SMTHNG_WRONG,
+    ERRORTEXT_NOT_FIND_NTHNG,
 };

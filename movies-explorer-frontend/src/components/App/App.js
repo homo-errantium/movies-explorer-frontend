@@ -3,8 +3,8 @@ import {
     Route,
     Routes,
     Navigate,
-    useNavigate,
     useLocation,
+    useNavigate,
 } from 'react-router-dom';
 
 import './App.css';
@@ -20,14 +20,22 @@ import NotFound from '../NotFound/NotFound';
 import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+
 import * as mainApi from '../../utils/MainApi';
+import {
+    ERRORTEXT_LOGIN,
+    ERRORTEXT_REGISTER,
+    ERRORTEXT_EMAIL_EXIST,
+    ERRORTEXT_UPDATE_USER_DATA,
+    ERRORTEXT_INCORRECT_USER_DATA,
+} from '../../utils/errorText';
 
 function App() {
     const location = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
-    const [isOk, setIsOk] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
     const [errorRequest, setErrorRequest] = React.useState(false);
     const [errorText, setErrorText] = React.useState(false);
     const [isProfileForm, setIsProfileForm] = useState(false);
@@ -59,18 +67,9 @@ function App() {
 
     useEffect(() => {
         if (isLoggedIn) {
-            mainApi
-                .getUserInfo()
-                .then((profileInfo) => {
+            Promise.all([mainApi.getUserInfo(), mainApi.getCards()])
+                .then(([profileInfo, cardsData]) => {
                     setCurrentUser(profileInfo);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-
-            mainApi
-                .getCards()
-                .then((cardsData) => {
                     setSavedMovies(cardsData.reverse());
                 })
                 .catch((err) => {
@@ -85,22 +84,20 @@ function App() {
             .register(name, email, password)
             .then(() => {
                 handleLogin({ email, password });
-                setIsOk(true);
+                setIsSuccess(true);
                 setIsRegForm(true);
                 setErrorRequest(false);
             })
             .catch((err) => {
                 console.log(err.status);
-                setIsOk(false);
+                setIsSuccess(false);
                 setIsRegForm(true);
                 setErrorRequest(true);
                 if (err.status === 409) {
-                    setErrorText('Пользователь с таким email уже существует');
+                    setErrorText(ERRORTEXT_EMAIL_EXIST);
                     return;
                 } else {
-                    setErrorText(
-                        'При регистрации пользователя произошла ошибка.'
-                    );
+                    setErrorText(ERRORTEXT_REGISTER);
                 }
             });
     }
@@ -122,10 +119,10 @@ function App() {
                 setIsLoggedIn(false);
                 setErrorRequest(true);
                 if (err.status === 401) {
-                    setErrorText('Вы ввели неправильный логин или пароль.');
+                    setErrorText(ERRORTEXT_INCORRECT_USER_DATA);
                     return;
                 } else {
-                    setErrorText('При авторизации произошла ошибка.');
+                    setErrorText(ERRORTEXT_LOGIN);
                 }
             });
     }
@@ -134,25 +131,23 @@ function App() {
         mainApi
             .setUserInfo(newUserInfo)
             .then((data) => {
-                setIsOk(true);
+                console.log(data);
+                setIsSuccess(true);
                 setCurrentUser(data);
                 setIsProfileForm(true);
                 setErrorRequest(false);
             })
             .catch((err) => {
                 console.log(err.status);
-                setIsOk(false);
+                setIsSuccess(false);
                 handleUnauthorized(err);
                 setIsProfileForm(true);
                 setErrorRequest(true);
                 if (err.status === 500) {
-                    setErrorText('Пользователь с таким email уже существует');
-                    console.error('Пользователь с таким email уже существует');
+                    setErrorText(ERRORTEXT_EMAIL_EXIST);
                     return;
                 } else {
-                    setErrorText(
-                        'При обновлении данных пользователя произошла ошибка.'
-                    );
+                    setErrorText(ERRORTEXT_UPDATE_USER_DATA);
                 }
             });
     }
@@ -203,7 +198,7 @@ function App() {
     function closePopup() {
         setIsRegForm(false);
         setIsProfileForm(false);
-        setIsOk(false);
+        setIsSuccess(false);
     }
 
     return (
@@ -308,7 +303,7 @@ function App() {
                 {/* окно попапа уведомления */}
                 <InfoTooltip
                     isProfileForm={isProfileForm}
-                    isOk={isOk}
+                    isSuccess={isSuccess}
                     isRegForm={isRegForm}
                     onClose={closePopup}
                 />

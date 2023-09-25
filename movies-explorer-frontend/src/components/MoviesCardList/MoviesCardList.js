@@ -4,10 +4,14 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 import {
-    SHOW_MORE_DECKTOP,
-    SHOW_MORE_TABLET,
-    SHOW_MORE_MOBILE,
+    BUTTON_MORE_DECKTOP,
+    BUTTON_MORE_TABLET,
+    BUTTON_MORE_MOBILE,
 } from '../../utils/constants';
+import {
+    ERRORTEXT_MOVIES_SMTHNG_WRONG,
+    ERRORTEXT_NOT_FIND_NTHNG,
+} from '../../utils/errorText';
 
 function MoviesCardList({
     cards,
@@ -27,9 +31,9 @@ function MoviesCardList({
         if (display > 1180) {
             setShownMovies(16);
         } else if (display > 1023) {
+            setShownMovies(16);
+        } else if (display > 700) {
             setShownMovies(12);
-        } else if (display > 800) {
-            setShownMovies(8);
         } else if (display < 800) {
             setShownMovies(5);
         }
@@ -47,12 +51,12 @@ function MoviesCardList({
 
     function showMore() {
         const display = window.innerWidth;
-        if (display > 1180) {
-            setShownMovies(shownMovies + SHOW_MORE_DECKTOP);
-        } else if (display > 1023) {
-            setShownMovies(shownMovies + SHOW_MORE_TABLET);
-        } else if (display < 1023) {
-            setShownMovies(shownMovies + SHOW_MORE_MOBILE);
+        if (display > 1023) {
+            setShownMovies(shownMovies + BUTTON_MORE_DECKTOP);
+        } else if (display > 700) {
+            setShownMovies(shownMovies + BUTTON_MORE_TABLET);
+        } else if (display < 480) {
+            setShownMovies(shownMovies + BUTTON_MORE_MOBILE);
         }
     }
 
@@ -65,14 +69,12 @@ function MoviesCardList({
             {isLoading && <Preloader />}
             {isNotFindMovies && !isLoading && (
                 <p className='movies-card-list__search-error'>
-                    Ничего не найдено
+                    {ERRORTEXT_NOT_FIND_NTHNG}
                 </p>
             )}
             {isReqErr && !isLoading && (
                 <p className='movies-card-list__search-error'>
-                    Во время запроса произошла ошибка. Возможно, проблема с
-                    соединением или сервер недоступен. Подождите немного и
-                    попробуйте ещё раз
+                    {ERRORTEXT_MOVIES_SMTHNG_WRONG}
                 </p>
             )}
             {!isLoading && !isReqErr && !isNotFindMovies && (

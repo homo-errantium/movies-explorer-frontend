@@ -2,8 +2,9 @@ import React from 'react';
 import './InfoTooltip.css';
 import logoGood from '../../images/logoGood.svg';
 import logoBad from '../../images/logoBad.svg';
+import { ERRORTEXT_SMTHNG_WRONG } from '../../utils/errorText';
 
-function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
+function InfoTooltip({ onClose, isSuccess, isRegForm, isProfileForm }) {
     return (
         <div
             className={`popup ${
@@ -17,7 +18,7 @@ function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
                     className='popup__close-button'
                     onClick={onClose}
                 />
-                {isRegForm && isOk && (
+                {isRegForm && isSuccess && (
                     <>
                         <img
                             className='popup__signup-image'
@@ -29,7 +30,7 @@ function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
                         </h2>
                     </>
                 )}
-                {isRegForm && !isOk && (
+                {isRegForm && !isSuccess && (
                     <>
                         <img
                             className='popup__signup-image'
@@ -37,12 +38,12 @@ function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
                             alt='логотип неуспешной регистрации'
                         />
                         <h2 className='popup__signup-title'>
-                            Что-то пошло не так! Попробуйте ещё раз.
+                            {ERRORTEXT_SMTHNG_WRONG}
                         </h2>
                     </>
                 )}
 
-                {isProfileForm && isOk && (
+                {isProfileForm && isSuccess && (
                     <>
                         <img
                             className='popup__signup-image'
@@ -55,16 +56,15 @@ function InfoTooltip({ onClose, isOk, isRegForm, isProfileForm }) {
                     </>
                 )}
 
-                {isProfileForm && !isOk && (
+                {isProfileForm && !isSuccess && (
                     <>
-                        {' '}
                         <img
                             className='popup__signup-image'
                             src={logoBad}
                             alt='логотип неуспешного редактирования'
                         />
                         <h2 className='popup__signup-title'>
-                            Что-то пошло не так! Попробуйте ещё раз.
+                            {ERRORTEXT_SMTHNG_WRONG}
                         </h2>
                     </>
                 )}
@@ -80,7 +80,7 @@ export default InfoTooltip;
 // import logoGood from '../../images/logoGood.svg';
 // import logoBad from '../../images/logoBad.svg';
 
-// function InfoTooltip({ onClose, isSuccess, isOk }) {
+// function InfoTooltip({ onClose, isSuccess, isSuccess }) {
 //     return (
 //         <div className={`popup ${!isSuccess ? 'popup_opened' : ''}`}>
 //             <div className='popup__container'>
@@ -96,7 +96,7 @@ export default InfoTooltip;
 //                     alt='Что-то пошло не так'
 //                 />
 //                 <h2 className='popup__signup-title'>{`${
-//                     isOk
+//                     isSuccess
 //                         ? 'Редактирование прошло успешно!'
 //                         : 'Что-то пошло не так! Попробуйте ещё раз.'
 //                 }`}</h2>

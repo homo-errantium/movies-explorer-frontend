@@ -23,15 +23,15 @@ function MoviesCard({
     }
 
     return (
-        <li className='card'>
+        <li className='movieCard'>
             <a
-                className='card__trailer-link'
+                className='movieCard__trailer-link'
                 href={card.trailerLink}
                 target='_blank'
                 rel='noreferrer'
             >
                 <img
-                    className='card__image'
+                    className='movieCard__image'
                     alt={card.nameRU}
                     src={
                         isSavedFilms
@@ -41,26 +41,30 @@ function MoviesCard({
                 />
             </a>
 
-            <div className='card__info'>
-                <h2 className='card__title'>{card.nameRU}</h2>
+            <div className='movieCard__info'>
+                <h2 className='movieCard__title'>{card.nameRU}</h2>
 
                 {isSavedFilms ? (
                     <button
                         onClick={onDelete}
                         type='button'
-                        className='card__delete-button'
+                        className='movieCard__delete-button'
                     ></button>
                 ) : (
                     <button
                         type='button'
                         className={
-                            saved ? 'card__active-button' : 'card__save-button'
+                            saved
+                                ? 'movieCard__active-button'
+                                : 'movieCard__save-button'
                         }
                         onClick={onCardClick}
                     ></button>
                 )}
             </div>
-            <p className='card__duration'>{durationConverter(card.duration)}</p>
+            <p className='movieCard__duration'>
+                {durationConverter(card.duration)}
+            </p>
         </li>
     );
 }

@@ -7,14 +7,21 @@ import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 import * as moviesApi from '../../utils/MoviesApi';
 
-function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
+function Movies({
+    noResetCountMovies,
+    resetCountMovies,
+    isReSearch,
+    loggedIn,
+    handleLikeClick,
+    savedMovies,
+    onCardDelete,
+}) {
     const [allFindedMovies, setAllFindedMovies] = useState([]); //все найденные фильмы
     const [filteredMovies, setFilteredMovies] = useState([]); //отфильтрованные фильмы
     const [isShortMovies, setIsShortMovies] = useState(false); //короткометражки?
     const [isLoading, setIsLoading] = useState(false);
     const [isReqErr, setIsReqErr] = useState(false); //ошибка запроса
     const [isNotFindMovies, setIsNotFindMovies] = useState(false); //фильмы не найдены
-    const [isReSearch, setIsReSearch] = useState(false);
 
     //основнай запрос
     function handleFilterMovies(movies, query, short) {
@@ -100,13 +107,6 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
             setIsNotFindMovies(false);
         }
     }, [filteredMovies]);
-
-    function resetCountMovies() {
-        setIsReSearch(true);
-    }
-    function noResetCountMovies() {
-        setIsReSearch(false);
-    }
 
     return (
         <div className='wrapper'>

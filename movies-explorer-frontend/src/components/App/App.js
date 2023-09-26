@@ -40,6 +40,7 @@ function App() {
     const [errorText, setErrorText] = React.useState(false);
     const [isProfileForm, setIsProfileForm] = useState(false);
     const [isRegForm, setIsRegForm] = useState(false);
+    const [isReSearch, setIsReSearch] = useState(false);
 
     const path = location.pathname;
     const navigate = useNavigate();
@@ -204,6 +205,13 @@ function App() {
         setErrorRequest(false);
     }
 
+    function resetCountMovies() {
+        setIsReSearch(true);
+    }
+    function noResetCountMovies() {
+        setIsReSearch(false);
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className='page'>
@@ -253,6 +261,9 @@ function App() {
                                 <ProtectedRoute isLoggedIn={isLoggedIn} />
                                 {
                                     <Movies
+                                        noResetCountMovies={noResetCountMovies}
+                                        resetCountMovies={resetCountMovies}
+                                        isReSearch={isReSearch}
                                         loggedIn={isLoggedIn}
                                         savedMovies={savedMovies}
                                         onCardDelete={handleCardDelete}
@@ -272,6 +283,9 @@ function App() {
                                 <ProtectedRoute isLoggedIn={isLoggedIn} />
                                 {
                                     <SavedMovies
+                                        noResetCountMovies={noResetCountMovies}
+                                        resetCountMovies={resetCountMovies}
+                                        isReSearch={isReSearch}
                                         savedMovies={savedMovies}
                                         loggedIn={isLoggedIn}
                                         onCardDelete={handleCardDelete}

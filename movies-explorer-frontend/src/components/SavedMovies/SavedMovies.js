@@ -6,7 +6,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import { filterMovies, filterDuration } from '../../utils/utils';
 
-function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
+function SavedMovies({
+    noResetCountMovies,
+    resetCountMovies,
+    isReSearch,
+    loggedIn,
+    savedMovies,
+    onCardDelete,
+}) {
     const [filteredMovies, setFilteredMovies] = useState(savedMovies);
     const [isShortMovies, setIsShortMovies] = useState(false);
     const [isNotFound, setIsNotFound] = useState(false);
@@ -41,10 +48,13 @@ function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
             <Header loggedIn={loggedIn} main={false} />
             <main className='savedMovies' id='savedMovies'>
                 <SearchForm
+                    resetCountMovies={resetCountMovies}
                     onSearchMovies={onSearchMovies}
                     onFilter={handleShortMovies}
                 />
                 <MoviesCardList
+                    noResetCountMovies={noResetCountMovies}
+                    isReSearch={isReSearch}
                     isNotFound={isNotFound}
                     isSavedFilms={true}
                     cards={filteredMovies}

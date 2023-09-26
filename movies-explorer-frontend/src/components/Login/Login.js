@@ -5,7 +5,7 @@ import useForm from '../hooks/useForm';
 import { EMAIL_REGEX } from '../../utils/constants';
 import logo from '../../images/logo.svg';
 
-function Login({ onAuthorize, errorRequest, errorText }) {
+function Login({ onAuthorize, errorRequest, errorText, resetError }) {
     const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
 
     function handleSubmit(e) {
@@ -15,6 +15,11 @@ function Login({ onAuthorize, errorRequest, errorText }) {
             password: userNewValues.password,
         });
     }
+
+    React.useEffect(() => {
+        resetError();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <main className='login' id='login'>

@@ -11,7 +11,7 @@ function NotFound() {
             <Link
                 to='/'
                 className='not-found__back-link'
-                onClick={() => navigate(-1)}
+                onClick={() => navigate(-3)}
             >
                 Назад
             </Link>

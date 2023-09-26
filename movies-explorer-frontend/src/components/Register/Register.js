@@ -5,8 +5,13 @@ import logo from '../../images/logo.svg';
 import useForm from '../hooks/useForm';
 import { USERNAME_REGEX, EMAIL_REGEX } from '../../utils/constants';
 
-function Register({ onRegister, errorRequest, errorText }) {
+function Register({ onRegister, errorRequest, errorText, resetError }) {
     const { userNewValues, errors, handleChange, isValidatedForm } = useForm();
+
+    React.useEffect(() => {
+        resetError();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function handleSubmit(e) {
         e.preventDefault();

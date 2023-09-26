@@ -131,7 +131,6 @@ function App() {
         mainApi
             .setUserInfo(newUserInfo)
             .then((data) => {
-                console.log(data);
                 setIsSuccess(true);
                 setCurrentUser(data);
                 setIsProfileForm(true);
@@ -201,6 +200,10 @@ function App() {
         setIsSuccess(false);
     }
 
+    function resetError() {
+        setErrorRequest(false);
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className='page'>
@@ -217,6 +220,7 @@ function App() {
                                     onAuthorize={handleLogin}
                                     errorRequest={errorRequest}
                                     errorText={errorText}
+                                    resetError={resetError}
                                 />
                             ) : (
                                 <Navigate to='/' />
@@ -233,6 +237,7 @@ function App() {
                                     onRegister={handleRegister}
                                     errorRequest={errorRequest}
                                     errorText={errorText}
+                                    resetError={resetError}
                                 />
                             ) : (
                                 <Navigate to='/' />

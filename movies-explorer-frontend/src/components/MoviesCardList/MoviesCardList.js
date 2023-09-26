@@ -4,6 +4,15 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 import {
+    COLUMN_X1,
+    COLUMN_X2,
+    COLUMN_X3,
+    COLUMN_X4,
+    WIDTH_DECKTOP_LARGE,
+    WIDTH_DECKTOP,
+    WIDTH_TABLET_LANDSCAPE,
+    WIDTH_TABLET_PORTRAIT,
+    WIDTH_MOBILE,
     BUTTON_MORE_DECKTOP,
     BUTTON_MORE_TABLET,
     BUTTON_MORE_MOBILE,
@@ -28,14 +37,17 @@ function MoviesCardList({
 
     function shownCount() {
         const display = window.innerWidth;
-        if (display > 1180) {
-            setShownMovies(16);
-        } else if (display > 1023) {
-            setShownMovies(16);
-        } else if (display > 700) {
-            setShownMovies(12);
-        } else if (display < 800) {
-            setShownMovies(5);
+        if (display > WIDTH_DECKTOP_LARGE) {
+            setShownMovies(COLUMN_X4);
+        } else if (display > WIDTH_DECKTOP) {
+            setShownMovies(COLUMN_X4);
+        } else if (display > WIDTH_TABLET_LANDSCAPE) {
+            // > 700
+            setShownMovies(COLUMN_X3);
+        } else if (display < WIDTH_TABLET_PORTRAIT) {
+            setShownMovies(COLUMN_X2);
+        } else if (display < WIDTH_MOBILE) {
+            setShownMovies(COLUMN_X1);
         }
     }
 
@@ -46,15 +58,18 @@ function MoviesCardList({
     useEffect(() => {
         setTimeout(() => {
             window.addEventListener('resize', shownCount);
+            // window.removeEventListener('resize', shownCount);
         }, 500);
     });
 
     function showMore() {
         const display = window.innerWidth;
-        if (display > 1023) {
+        if (display > 801) {
             setShownMovies(shownMovies + BUTTON_MORE_DECKTOP);
         } else if (display > 700) {
             setShownMovies(shownMovies + BUTTON_MORE_TABLET);
+        } else if (display < 701) {
+            setShownMovies(shownMovies + BUTTON_MORE_DECKTOP);
         } else if (display < 480) {
             setShownMovies(shownMovies + BUTTON_MORE_MOBILE);
         }

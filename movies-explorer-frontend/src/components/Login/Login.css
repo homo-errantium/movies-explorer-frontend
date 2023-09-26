@@ -76,6 +76,10 @@
     outline-color: grey;
 }
 
+.login__input:invalid {
+    color: #ee3465;
+}
+
 .login__inputt::placeholder {
     font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;

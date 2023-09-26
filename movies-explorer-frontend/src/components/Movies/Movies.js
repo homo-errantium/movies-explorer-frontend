@@ -14,6 +14,7 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isReqErr, setIsReqErr] = useState(false); //ошибка запроса
     const [isNotFindMovies, setIsNotFindMovies] = useState(false); //фильмы не найдены
+    const [isReSearch, setIsReSearch] = useState(false);
 
     //основнай запрос
     function handleFilterMovies(movies, query, short) {
@@ -100,16 +101,26 @@ function Movies({ loggedIn, handleLikeClick, savedMovies, onCardDelete }) {
         }
     }, [filteredMovies]);
 
+    function resetCountMovies() {
+        setIsReSearch(true);
+    }
+    function noResetCountMovies() {
+        setIsReSearch(false);
+    }
+
     return (
         <div className='wrapper'>
             <Header loggedIn={loggedIn} isMain={false} />
             <main className='movies main' id='movies'>
                 <SearchForm
+                    resetCountMovies={resetCountMovies}
                     onSearchMovies={onSearchMovies}
                     onFilter={handleShortMovies}
                     isShortMovies={isShortMovies}
                 />
                 <MoviesCardList
+                    noResetCountMovies={noResetCountMovies}
+                    isReSearch={isReSearch}
                     savedMovies={savedMovies}
                     cards={filteredMovies}
                     isSavedFilms={false}

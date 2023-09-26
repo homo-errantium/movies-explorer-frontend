@@ -11,7 +11,7 @@ import {
     WIDTH_DECKTOP_LARGE,
     WIDTH_DECKTOP,
     WIDTH_TABLET_LANDSCAPE,
-    WIDTH_TABLET_PORTRAIT,
+    WIDTH_MOBILE_LARGE,
     WIDTH_MOBILE,
     BUTTON_MORE_DECKTOP,
     BUTTON_MORE_TABLET,
@@ -23,6 +23,8 @@ import {
 } from '../../utils/errorText';
 
 function MoviesCardList({
+    noResetCountMovies,
+    isReSearch,
     cards,
     isSavedFilms,
     isLoading,
@@ -36,6 +38,9 @@ function MoviesCardList({
     const { pathname } = useLocation();
 
     function shownCount() {
+        if (isReSearch) {
+            setShownMovies(0);
+        }
         const display = window.innerWidth;
         if (display > WIDTH_DECKTOP_LARGE) {
             setShownMovies(COLUMN_X4);
@@ -44,21 +49,22 @@ function MoviesCardList({
         } else if (display > WIDTH_TABLET_LANDSCAPE) {
             // > 700
             setShownMovies(COLUMN_X3);
-        } else if (display < WIDTH_TABLET_PORTRAIT) {
+        } else if (display > WIDTH_MOBILE_LARGE) {
             setShownMovies(COLUMN_X2);
         } else if (display < WIDTH_MOBILE) {
             setShownMovies(COLUMN_X1);
         }
+        noResetCountMovies();
     }
 
     useEffect(() => {
         shownCount();
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isReSearch]);
 
     useEffect(() => {
         setTimeout(() => {
             window.addEventListener('resize', shownCount);
-            // window.removeEventListener('resize', shownCount);
         }, 500);
     });
 
@@ -69,7 +75,7 @@ function MoviesCardList({
         } else if (display > 700) {
             setShownMovies(shownMovies + BUTTON_MORE_TABLET);
         } else if (display < 701) {
-            setShownMovies(shownMovies + BUTTON_MORE_DECKTOP);
+            setShownMovies(shownMovies + BUTTON_MORE_MOBILE);
         } else if (display < 480) {
             setShownMovies(shownMovies + BUTTON_MORE_MOBILE);
         }

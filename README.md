@@ -8,7 +8,7 @@
 
 ### Для просмотра сайта вам достаточно скачать его в архивированном виде или пройти по ссылке на Github.com
 
--   Frontend (Домен сервера) [https://my.films.nomoredomainsicu.ru](https://my.films.nomoredomainsicu.ru]
+-   Frontend (Домен сервера) [https://my.films.nomoredomainsicu.ru](https://my.films.nomoredomainsicu.ru/)](https://my.films.nomoredomainsicu.ru]
 
 -   IP-адрес 51.250.14.4
 

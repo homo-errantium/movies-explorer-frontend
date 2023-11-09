@@ -14,6 +14,10 @@
         z-index: 1;
     }
 
+    .burger-menu__container-empty {
+        flex: 1 1 auto;
+    }
+
     .burger-menu__container {
         display: flex;
         flex-direction: column;
@@ -25,10 +29,6 @@
         width: 520px;
         min-height: 100vh;
         background-color: #202020;
-    }
-
-    .burger-menu__container-empty {
-        flex: 1 1 auto;
     }
 
     .burger-menu__close-button {
@@ -75,7 +75,7 @@
 
     .burger-menu__account-container:hover {
         cursor: pointer;
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     .burger-menu__account-container {
@@ -102,6 +102,7 @@
         margin: 3px 3px 3px 0;
         position: relative;
     }
+
     .burger-menu__account-logo {
         width: 11px;
         height: 11px;

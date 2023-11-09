@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './BurgerMenu.css';
 import account from '../../images/account.svg';
 
-function BurgerMenu(props) {
-    const handleClose = props.handleClose;
+function BurgerMenu({ handleClose }) {
     return (
         <div className='burger-menu'>
             <div
@@ -18,19 +17,32 @@ function BurgerMenu(props) {
                     onClick={handleClose}
                 ></button>
                 <nav className='burger-menu__links'>
-                    <NavLink to='/' className='burger-menu__link'>
+                    <NavLink
+                        to='/'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Главная
                     </NavLink>
-                    <NavLink to='/movies' className='burger-menu__link'>
+                    <NavLink
+                        to='/movies'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Фильмы
                     </NavLink>
-                    <NavLink to='/saved-movies' className='burger-menu__link'>
+                    <NavLink
+                        to='/saved-movies'
+                        className='burger-menu__link'
+                        onClick={handleClose}
+                    >
                         Сохранённые фильмы
                     </NavLink>
                 </nav>
                 <NavLink
                     to='/profile'
                     className='burger-menu__link burger-menu__account-container'
+                    onClick={handleClose}
                 >
                     <span className='burger-menu__account-title'>Аккаунт</span>
                     <div className='burger-menu__account-logo-container'>

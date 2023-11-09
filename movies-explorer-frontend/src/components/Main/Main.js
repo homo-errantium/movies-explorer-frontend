@@ -1,3 +1,4 @@
+import React from 'react';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -6,10 +7,10 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-function Main(props) {
+function Main({ loggedIn }) {
     return (
         <div className='wrapper'>
-            <Header isMain={true} loggedIn={props.loggedIn} />
+            <Header isMain={true} loggedIn={loggedIn} />
             <main className='main'>
                 <Promo />
                 <AboutProject />

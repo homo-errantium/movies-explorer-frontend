@@ -24,7 +24,6 @@
 .register__form {
     display: flex;
     flex-direction: column;
-    /* max-width: 396px; */
     border: none;
     outline: none;
 }
@@ -67,15 +66,11 @@
     color: #fff;
     width: 100%;
     border: none;
-    /* outline: none; */
+    outline: none;
     background-color: #202020;
     font-size: 14px;
     font-weight: 500;
     padding: 6px 0 9px;
-}
-
-.register__input_password {
-    letter-spacing: 0.24em;
 }
 
 .register__input::placeholder {
@@ -88,7 +83,7 @@
 }
 
 .register__input:focus {
-    outline-color: grey;
+    border-bottom: 2px solid grey;
 }
 
 .register__input:invalid {
@@ -97,13 +92,13 @@
 
 .register__input-error {
     font-family: 'Inter', 'Arial', 'sans-serif';
-    display: none;
+    display: block;
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
     color: #ff4062;
     position: absolute;
-    top: 51px;
+    top: 45px;
     text-align: left;
 }
 
@@ -128,6 +123,15 @@
     cursor: pointer;
 }
 
+.register__enter-button_disabled {
+    background-color: grey;
+    color: #c2c2c2;
+}
+
+.register__enter-button_disabled:hover {
+    cursor: not-allowed;
+}
+
 .register__reg-description {
     font-family: 'Inter', 'Arial', 'sans-serif';
     color: #8b8b8b;
@@ -140,6 +144,18 @@
     color: #4285f4;
     text-decoration: none;
     margin-left: 2px;
+}
+
+.register__form-error {
+    padding-bottom: 20px;
+    color: #ee3465;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.register__form-error_no-display {
+    display: none;
 }
 
 @media (max-width: 1300px) {
@@ -196,6 +212,5 @@
     }
     .register__enter-button {
         margin-bottom: 14px;
-        /* padding-bottom: 0; */
     }
 }

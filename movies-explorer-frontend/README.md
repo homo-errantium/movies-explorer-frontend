@@ -1,5 +1,7 @@
 # Сайт-проект "movies-explorer"
 
+-   Ссылка на pull-request [https://github.com/homo-errantium/movies-explorer-frontend/pull/2](https://github.com/homo-errantium/movies-explorer-frontend/pull/2)
+
 Данный проект представляет собой интерактивную платформу, на которой Вы можете:
 
 -   узнать о новых фильмах

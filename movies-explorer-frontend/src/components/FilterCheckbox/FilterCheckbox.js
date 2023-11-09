@@ -1,7 +1,7 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-function FilterCheckbox() {
+function FilterCheckbox({ onFilter, isShortMovies }) {
     return (
         <label
             htmlFor='search-form-toggle-input'
@@ -11,6 +11,8 @@ function FilterCheckbox() {
                 id='search-form-toggle-input'
                 className='search-form-toggle-label__input'
                 type='checkbox'
+                onChange={onFilter}
+                checked={isShortMovies}
             ></input>
         </label>
     );

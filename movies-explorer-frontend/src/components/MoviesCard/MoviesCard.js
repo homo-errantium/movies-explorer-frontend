@@ -1,41 +1,70 @@
 import React from 'react';
 import './MoviesCard.css';
-import forExample from '../../images/for_example.jpg'; //delete after connection to DB
+import { durationConverter } from '../../utils/utils';
 
-function MoviesCard(props) {
+function MoviesCard({
+    card,
+    isSavedFilms,
+    handleLikeClick,
+    onCardDelete,
+    saved,
+    savedMovies,
+}) {
+    function onCardClick() {
+        if (saved) {
+            onCardDelete(savedMovies.filter((m) => m.movieId === card.id)[0]);
+        } else {
+            handleLikeClick(card);
+        }
+    }
+
+    function onDelete() {
+        onCardDelete(card);
+    }
+
     return (
-        <li className='movie-card'>
+        <li className='movieCard'>
             <a
-                className='movie-card__trailer-link'
-                href='ya.ru'
+                className='movieCard__trailer-link'
+                href={card.trailerLink}
                 target='_blank'
                 rel='noreferrer'
             >
                 <img
-                    className='movie-card__image'
-                    alt={'здесь будет уникальный альт после соединение с бэк-ом'}
-                    src={forExample}
+                    className='movieCard__image'
+                    alt={card.nameRU}
+                    src={
+                        isSavedFilms
+                            ? card.image
+                            : `https://api.nomoreparties.co/${card.image.url}`
+                    }
                 />
             </a>
 
-            <div className='movie-card__info'>
-                <h2 className='movie-card__title'>Название фильма</h2>
+            <div className='movieCard__info'>
+                <h2 className='movieCard__title'>{card.nameRU}</h2>
 
-                {true ? (
+                {isSavedFilms ? (
                     <button
+                        onClick={onDelete}
                         type='button'
-                        className='movie-card__delete-button'
+                        className='movieCard__delete-button'
                     ></button>
                 ) : (
                     <button
                         type='button'
-                        className={`movie-card__save-button ${
-                            true ? 'movie-card__active-button' : ''
-                        }`}
+                        className={
+                            saved
+                                ? 'movieCard__active-button'
+                                : 'movieCard__save-button'
+                        }
+                        onClick={onCardClick}
                     ></button>
                 )}
             </div>
-            <p className='movie-card__duration'>1ч 33м</p>
+            <p className='movieCard__duration'>
+                {durationConverter(card.duration)}
+            </p>
         </li>
     );
 }

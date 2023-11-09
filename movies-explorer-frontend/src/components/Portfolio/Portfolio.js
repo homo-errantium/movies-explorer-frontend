@@ -1,4 +1,3 @@
-import React from 'react';
 import './Portfolio.css';
 import arrow from '../../images/arrow.svg';
 
@@ -39,7 +38,7 @@ function Portfolio() {
                 </li>
                 <li className='portfolo__links-item'>
                     <a
-                        href='https://github.com/homo-errantium/react-mesto-api-full-gha/'
+                        href='https://my.place.nomoreparties.co'
                         className='portfolio__link '
                         target='_blank'
                         rel='noreferrer'

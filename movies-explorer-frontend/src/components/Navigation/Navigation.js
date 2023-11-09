@@ -5,7 +5,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 // import TestBurgerMenu from '../TestBurgerMenu/TestBurgerMenu';
 import account from '../../images/account.svg';
 
-function Navigation(props) {
+function Navigation({ loggedIn }) {
     const [isClicked, setIsClicked] = useState(false);
 
     function handleOpen() {
@@ -18,11 +18,9 @@ function Navigation(props) {
 
     return (
         <div
-            className={
-                props.loggedIn ? 'navigation' : 'navigation navigation_right'
-            }
+            className={loggedIn ? 'navigation' : 'navigation navigation_right'}
         >
-            {props.loggedIn ? (
+            {loggedIn ? (
                 <>
                     <nav className='navigation__movies'>
                         <Link
@@ -51,7 +49,6 @@ function Navigation(props) {
                             />
                         </div>
                     </Link>
-                    {/* <TestBurgerMenu /> */}
                     <button
                         type='button'
                         className='navigation__burger-button'

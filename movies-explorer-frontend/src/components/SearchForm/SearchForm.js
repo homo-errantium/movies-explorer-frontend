@@ -1,22 +1,63 @@
+import React, { useState, useEffect } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import { useLocation } from 'react-router-dom';
 
-function SearchForm() {
+function SearchForm({
+    resetCountMovies,
+    onSearchMovies,
+    onFilter,
+    isShortMovies,
+}) {
+    const [isQueryError, setIsQueryError] = useState(false);
+
+    const [query, setQuery] = useState('');
+    const location = useLocation();
+
+    function handleChangeQuery(e) {
+        setQuery(e.target.value);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (query.trim().length === 0) {
+            setIsQueryError(true);
+        } else {
+            setIsQueryError(false);
+            onSearchMovies(query);
+        }
+        resetCountMovies();
+    }
+
+    useEffect(() => {
+        if (
+            location.pathname === '/movies' &&
+            localStorage.getItem('movieSearch')
+        ) {
+            const localQuery = localStorage.getItem('movieSearch');
+            setQuery(localQuery);
+        }
+    }, [location]);
+
     return (
         <div className='searchForm' id='searchForm'>
-            <form className='searchForm__form'>
+            <form
+                className='searchForm__form'
+                onSubmit={handleSubmit}
+                noValidate='novalidate'
+            >
                 <fieldset className='searchForm__field'>
                     <label
                         className='searchForm__label'
                         htmlFor='searchForm-input'
                     ></label>
                     <input
-                        // ref={ref}
                         className='searchForm__input'
                         id='searchForm-input'
                         type='text'
                         name='search'
-                        // value={'Фильм' || ''}
+                        value={query || ''}
+                        onChange={handleChangeQuery}
                         placeholder='Фильм'
                         required
                     />
@@ -26,7 +67,15 @@ function SearchForm() {
                     <span className='searchForm__button-text'>Найти</span>
                 </button>
                 <div className='searchForm__toggle-box'>
-                    <FilterCheckbox />
+                    <FilterCheckbox
+                        onFilter={onFilter}
+                        isShortMovies={isShortMovies}
+                    />
+                    {isQueryError && (
+                        <span className='searchForm__error'>
+                            Нужно ввести ключевое слово
+                        </span>
+                    )}
                     <h3 className='searchForm__toggle-title'>
                         Короткометражки
                     </h3>
